@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { Activity, Database, Code2, Lightbulb, Brain, Menu, X, Github, ExternalLink } from 'lucide-react';
+import { Activity, Database, Code2, Lightbulb, Brain, Building2, Menu, X, Github, ExternalLink } from 'lucide-react';
 import { cheatsheetData } from './data/cheatsheetData';
 import ComplexityCard from './components/ComplexityCard';
 import DataStructureCard from './components/DataStructureCard';
 import AlgorithmCard from './components/AlgorithmCard';
 import PatternCard from './components/PatternCard';
 import TipsCard from './components/TipsCard';
+import CompanyQuestionsCard from './components/CompanyQuestionsCard';
 import './App.css';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
     { id: 'dataStructures', label: 'Data Structures', icon: Database },
     { id: 'algorithms', label: 'Algorithms', icon: Code2 },
     { id: 'patterns', label: 'Patterns', icon: Lightbulb },
+    { id: 'companyQuestions', label: 'Companies', icon: Building2 },
     { id: 'tips', label: 'Tips', icon: Brain }
   ];
 
@@ -33,7 +35,7 @@ function App() {
             </button>
             <h1 className="logo">
               <span className="logo-bracket">&lt;</span>
-              LeetLogic
+              LeetCode
               <span className="logo-bracket">/&gt;</span>
             </h1>
           </div>
@@ -144,6 +146,23 @@ function App() {
                 <div className="patterns-grid">
                   {cheatsheetData.patterns.sections.map((pattern, idx) => (
                     <PatternCard key={idx} pattern={pattern} />
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {activeTab === 'companyQuestions' && (
+              <section className="section">
+                <div className="section-header">
+                  <Building2 className="section-icon" size={32} />
+                  <div>
+                    <h2 className="section-title">{cheatsheetData.companyQuestions.title}</h2>
+                    <p className="section-subtitle">Frequently asked questions by top tech companies</p>
+                  </div>
+                </div>
+                <div className="company-questions-grid">
+                  {cheatsheetData.companyQuestions.companies.map((company, idx) => (
+                    <CompanyQuestionsCard key={idx} company={company} />
                   ))}
                 </div>
               </section>
