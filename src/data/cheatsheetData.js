@@ -935,114 +935,2767 @@ const fibOptimized = (n) => {
   },
 
   patterns: {
-    title: "Common Patterns",
+    title: "DSA Patterns & Roadmap",
     icon: "Lightbulb",
     sections: [
       {
-        title: "Two Pointers",
+        title: "1. Fast and Slow Pointer",
         description:
-          "Use two pointers to traverse array/string from different positions",
+          "Use two pointers moving at different speeds to detect cycles or find middle elements",
         useCases: [
-          "Sorted arrays",
-          "Palindromes",
-          "Pair finding",
-          "Removing duplicates",
+          "Detecting cycles in linked lists",
+          "Finding the middle of a linked list",
+          "Finding duplicate numbers in arrays",
+          "Checking if a linked list is a palindrome",
         ],
-        examples: [
-          "Two Sum II",
-          "Container With Most Water",
-          "3Sum",
-          "Remove Duplicates",
+        code: {
+          javascript: `function fastSlowPointer(head) {
+    let slow = head;
+    let fast = head;
+    let ans = 0;
+    
+    while (fast && fast.next) {
+        // Do logic
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+    
+    return ans;
+}`,
+          python: `def fast_slow_pointer(head):
+    slow = head
+    fast = head
+    ans = 0
+    
+    while fast and fast.next:
+        # Do logic
+        slow = slow.next
+        fast = fast.next.next
+    
+    return ans`,
+          java: `public int fastSlowPointer(ListNode head) {
+    ListNode slow = head;
+    ListNode fast = head;
+    int ans = 0;
+    
+    while (fast != null && fast.next != null) {
+        // do logic
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+    
+    return ans;
+}`,
+          cpp: `int fastSlowPointer(ListNode* head) {
+    ListNode* slow = head;
+    ListNode* fast = head;
+    int ans = 0;
+    
+    while (fast && fast->next) {
+        // do logic
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    
+    return ans;
+}`,
+        },
+        problems: [
+          "Linked List Cycle II",
+          "Remove nth Node from the End of List",
+          "Find the Duplicate Number",
+          "Palindrome Linked List",
         ],
       },
       {
-        title: "Sliding Window",
-        description: "Maintain a window that slides through array/string",
+        title: "2. Two Pointers: One Input, Opposite Ends",
+        description: "Start from both ends of array and move towards center",
         useCases: [
-          "Subarray problems",
-          "Substring problems",
-          "Finding patterns",
+          "Finding pairs in sorted arrays",
+          "Palindrome checking",
+          "Container with most water problems",
+          "Trapping rain water",
         ],
-        examples: [
-          "Longest Substring Without Repeating",
-          "Maximum Sum Subarray",
-          "Minimum Window Substring",
+        code: {
+          javascript: `function twoPointers(arr) {
+    let left = 0;
+    let right = arr.length - 1;
+    let ans = 0;
+    
+    while (left < right) {
+        // Do some logic here with left and right
+        if (CONDITION) {
+            left++;
+        } else {
+            right--;
+        }
+    }
+    
+    return ans;
+}`,
+          python: `def two_pointers(arr):
+    left = 0
+    right = len(arr) - 1
+    ans = 0
+    
+    while left < right:
+        # Do some logic here with left and right
+        if CONDITION:
+            left += 1
+        else:
+            right -= 1
+    
+    return ans`,
+          java: `public int twoPointers(int[] arr) {
+    int left = 0;
+    int right = arr.length - 1;
+    int ans = 0;
+    
+    while (left < right) {
+        // do some logic here with left and right
+        if (CONDITION) {
+            left++;
+        } else {
+            right--;
+        }
+    }
+    
+    return ans;
+}`,
+          cpp: `int twoPointers(vector<int>& arr) {
+    int left = 0;
+    int right = arr.size() - 1;
+    int ans = 0;
+    
+    while (left < right) {
+        // do some logic here with left and right
+        if (CONDITION) {
+            left++;
+        } else {
+            right--;
+        }
+    }
+    
+    return ans;
+}`,
+        },
+        problems: [
+          "Two Sum II - Input Array is Sorted",
+          "Dutch National Flag: Sort Colors",
+          "Next Permutation",
+          "Bag of Tokens",
+          "Container with most water",
+          "Trapping Rain Water",
         ],
       },
       {
-        title: "Fast & Slow Pointers",
-        description: "Two pointers moving at different speeds",
-        useCases: [
-          "Cycle detection",
-          "Finding middle",
-          "Palindrome linked list",
-        ],
-        examples: [
-          "Linked List Cycle",
-          "Happy Number",
-          "Find Duplicate Number",
+        title: "3. Two Pointers: Two Inputs, Exhaust Both",
+        description: "Merge or compare two sorted arrays/lists efficiently",
+        code: {
+          javascript: `function twoPointers(arr1, arr2) {
+    let i = 0, j = 0, ans = 0;
+    
+    while (i < arr1.length && j < arr2.length) {
+        // Do some logic here
+        if (CONDITION) {
+            i++;
+        } else {
+            j++;
+        }
+    }
+    
+    while (i < arr1.length) {
+        // Do logic
+        i++;
+    }
+    
+    while (j < arr2.length) {
+        // Do logic
+        j++;
+    }
+    
+    return ans;
+}`,
+          python: `def two_pointers(arr1, arr2):
+    i = j = ans = 0
+    
+    while i < len(arr1) and j < len(arr2):
+        # Do some logic here
+        if CONDITION:
+            i += 1
+        else:
+            j += 1
+    
+    while i < len(arr1):
+        # Do logic
+        i += 1
+    
+    while j < len(arr2):
+        # Do logic
+        j += 1
+    
+    return ans`,
+          java: `public int twoPointers(int[] arr1, int[] arr2) {
+    int i = 0, j = 0, ans = 0;
+    
+    while (i < arr1.length && j < arr2.length) {
+        // do some logic here
+        if (CONDITION) {
+            i++;
+        } else {
+            j++;
+        }
+    }
+    
+    while (i < arr1.length) {
+        // do logic
+        i++;
+    }
+    
+    while (j < arr2.length) {
+        // do logic
+        j++;
+    }
+    
+    return ans;
+}`,
+          cpp: `int twoPointers(vector<int>& arr1, vector<int>& arr2) {
+    int i = 0, j = 0, ans = 0;
+    
+    while (i < arr1.size() && j < arr2.size()) {
+        // do some logic here
+        if (CONDITION) {
+            i++;
+        } else {
+            j++;
+        }
+    }
+    
+    while (i < arr1.size()) {
+        // do logic
+        i++;
+    }
+    
+    while (j < arr2.size()) {
+        // do logic
+        j++;
+    }
+    
+    return ans;
+}`,
+        },
+        problems: [
+          "Merge Sorted Array",
+          "Intersection of Two Arrays",
+          "Intersection of Two Arrays II",
         ],
       },
       {
-        title: "Binary Search",
-        description: "Divide search space in half repeatedly",
-        useCases: [
-          "Sorted arrays",
-          "Search space reduction",
-          "Finding boundaries",
+        title: "4. Sliding Window",
+        description: "Fixed or dynamic window that slides through array",
+        categories: [
+          {
+            category: "Fixed Size",
+            problems: [
+              "Maximum Sum Subarray of Size K",
+              "Number of Subarrays having Average Greater or Equal to Threshold",
+              "Repeated DNA sequences",
+              "Permutation in String",
+              "Sliding Subarray Beauty",
+              "Sliding Window Maximum",
+            ],
+          },
+          {
+            category: "Variable Size",
+            problems: [
+              "Longest Substring Without Repeating Characters",
+              "Minimum Size Subarray Sum",
+              "Subarray Product Less Than K",
+              "Max Consecutive Ones",
+              "Fruits Into Baskets",
+              "Count Number of Nice Subarrays",
+              "Minimum Window Substring",
+            ],
+          },
         ],
-        examples: [
-          "Search Insert Position",
-          "Find First and Last Position",
-          "Search in Rotated Array",
+        code: {
+          javascript: `function slidingWindow(arr) {
+    let left = 0, ans = 0, curr = 0;
+    
+    for (let right = 0; right < arr.length; right++) {
+        // Do logic here to add arr[right] to curr
+        
+        while (WINDOW_CONDITION_BROKEN) {
+            // Remove arr[left] from curr
+            left++;
+        }
+        
+        // Update ans
+    }
+    
+    return ans;
+}`,
+          python: `def sliding_window(arr):
+    left = ans = curr = 0
+    
+    for right in range(len(arr)):
+        # do logic here to add arr[right] to curr
+        
+        while WINDOW_CONDITION_BROKEN:
+            # remove arr[left] from curr
+            left += 1
+        
+        # update ans
+    
+    return ans`,
+          java: `public int slidingWindow(int[] arr) {
+    int left = 0, ans = 0, curr = 0;
+    
+    for (int right = 0; right < arr.length; right++) {
+        // do logic here to add arr[right] to curr
+        
+        while (WINDOW_CONDITION_BROKEN) {
+            // remove arr[left] from curr
+            left++;
+        }
+        
+        // update ans
+    }
+    
+    return ans;
+}`,
+          cpp: `int slidingWindow(vector<int>& arr) {
+    int left = 0, ans = 0, curr = 0;
+    
+    for (int right = 0; right < arr.size(); right++) {
+        // do logic here to add arr[right] to curr
+        
+        while (WINDOW_CONDITION_BROKEN) {
+            // remove arr[left] from curr
+            left++;
+        }
+        
+        // update ans
+    }
+    
+    return ans;
+}`,
+        },
+      },
+      {
+        title: "5. Prefix Sum",
+        description: "Precompute cumulative sums for range queries",
+        code: {
+          javascript: `function buildPrefixSum(arr) {
+    let prefix = [arr[0]];
+    
+    for (let i = 1; i < arr.length; i++) {
+        prefix.push(arr[i] + prefix[prefix.length - 1]);
+    }
+    
+    return prefix;
+}`,
+          python: `def build_prefix_sum(arr):
+    prefix = [arr[0]]
+    
+    for i in range(1, len(arr)):
+        prefix.append(arr[i] + prefix[-1])
+    
+    return prefix`,
+          java: `public int[] buildPrefixSum(int[] arr) {
+    int[] prefix = new int[arr.length];
+    prefix[0] = arr[0];
+    
+    for (int i = 1; i < arr.length; i++) {
+        prefix[i] = prefix[i - 1] + arr[i];
+    }
+    
+    return prefix;
+}`,
+          cpp: `vector<int> buildPrefixSum(vector<int>& arr) {
+    vector<int> prefix(arr.size());
+    prefix[0] = arr[0];
+    
+    for (int i = 1; i < arr.size(); i++) {
+        prefix[i] = prefix[i - 1] + arr[i];
+    }
+    
+    return prefix;
+}`,
+        },
+        problems: [
+          "Find the middle index in array",
+          "Product of array except self",
+          "Maximum product subarray",
+          "Number of ways to split array",
+          "Range Sum Query 2D",
         ],
       },
       {
-        title: "Top K Elements",
-        description: "Use heap to track K largest/smallest elements",
-        useCases: [
-          "Finding K largest",
-          "K closest points",
-          "Frequency-based problems",
-        ],
-        examples: [
-          "Kth Largest Element",
-          "Top K Frequent Elements",
-          "K Closest Points",
-        ],
-      },
-      {
-        title: "Merge Intervals",
+        title: "6. Overlapping Intervals",
         description: "Sort intervals and merge overlapping ones",
-        useCases: [
-          "Overlapping intervals",
-          "Scheduling problems",
-          "Range queries",
-        ],
-        examples: ["Merge Intervals", "Insert Interval", "Meeting Rooms"],
-      },
-      {
-        title: "Modified Binary Search",
-        description: "Binary search on rotated/modified arrays",
-        useCases: ["Rotated arrays", "Peak finding", "Mountain arrays"],
-        examples: [
-          "Search Rotated Array",
-          "Find Peak Element",
-          "Find in Mountain Array",
+        problems: [
+          "Merge Intervals",
+          "Insert Interval",
+          "My Calendar II",
+          "Minimum Number of Arrows to Burst Balloons",
+          "Non-overlapping Intervals",
         ],
       },
       {
-        title: "Monotonic Stack",
-        description: "Stack maintaining monotonic order",
+        title: "7. Cyclic Sort (Index-Based)",
+        description: "Sort array by placing each element at its correct index",
         useCases: [
-          "Next greater element",
-          "Temperature problems",
-          "Histogram problems",
+          "Finding missing numbers in arrays",
+          "Finding duplicate numbers",
+          "Array elements are in range [1, n]",
+          "Problems involving indices matching values",
         ],
-        examples: [
+        code: {
+          javascript: `function cyclicSort(arr) {
+    let i = 0;
+    
+    while (i < arr.length) {
+        const correctIdx = arr[i] - 1;
+        if (arr[i] !== arr[correctIdx]) {
+            // Swap
+            [arr[i], arr[correctIdx]] = [arr[correctIdx], arr[i]];
+        } else {
+            i++;
+        }
+    }
+    
+    return arr;
+}`,
+          python: `def cyclic_sort(arr):
+    i = 0
+    
+    while i < len(arr):
+        correct_idx = arr[i] - 1
+        if arr[i] != arr[correct_idx]:
+            # Swap
+            arr[i], arr[correct_idx] = arr[correct_idx], arr[i]
+        else:
+            i += 1
+    
+    return arr`,
+          java: `public void cyclicSort(int[] arr) {
+    int i = 0;
+    
+    while (i < arr.length) {
+        int correctIdx = arr[i] - 1;
+        if (arr[i] != arr[correctIdx]) {
+            // Swap
+            int temp = arr[i];
+            arr[i] = arr[correctIdx];
+            arr[correctIdx] = temp;
+        } else {
+            i++;
+        }
+    }
+}`,
+          cpp: `void cyclicSort(vector<int>& arr) {
+    int i = 0;
+    
+    while (i < arr.size()) {
+        int correctIdx = arr[i] - 1;
+        if (arr[i] != arr[correctIdx]) {
+            // Swap
+            swap(arr[i], arr[correctIdx]);
+        } else {
+            i++;
+        }
+    }
+}`,
+        },
+        problems: [
+          "Missing Number",
+          "Find Missing Numbers",
+          "Set Mismatch",
+          "First Missing Positive",
+        ],
+      },
+      {
+        title: "8. Reversal of Linked List (In-place)",
+        description: "Reverse pointers in linked list without extra space",
+        useCases: [
+          "Reversing entire linked list",
+          "Reversing k-group nodes",
+          "Reversing sub-list between positions",
+          "Palindrome checking in linked lists",
+        ],
+        code: {
+          javascript: `function reverseLinkedList(head) {
+    let prev = null;
+    let curr = head;
+    
+    while (curr) {
+        const nextNode = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr = nextNode;
+    }
+    
+    return prev;
+}`,
+          python: `def reverse_linked_list(head):
+    prev = None
+    curr = head
+    
+    while curr:
+        next_node = curr.next
+        curr.next = prev
+        prev = curr
+        curr = next_node
+    
+    return prev`,
+          java: `public ListNode reverseLinkedList(ListNode head) {
+    ListNode prev = null;
+    ListNode curr = head;
+    
+    while (curr != null) {
+        ListNode nextNode = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr = nextNode;
+    }
+    
+    return prev;
+}`,
+          cpp: `ListNode* reverseLinkedList(ListNode* head) {
+    ListNode* prev = nullptr;
+    ListNode* curr = head;
+    
+    while (curr) {
+        ListNode* nextNode = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = nextNode;
+    }
+    
+    return prev;
+}`,
+        },
+        problems: [
+          "Reverse Linked List",
+          "Reverse Nodes in k-Group",
+          "Swap Nodes in Pairs",
+        ],
+      },
+      {
+        title: "9. Matrix Manipulation",
+        description:
+          "In-place matrix rotation, spiral traversal, and modifications",
+        useCases: [
+          "Rotating matrix 90/180/270 degrees",
+          "Spiral order traversal",
+          "Setting rows/columns to zero",
+          "Matrix searching and modification",
+        ],
+        code: {
+          javascript: `// Rotate 90 degrees clockwise
+function rotateMatrix(matrix) {
+    const n = matrix.length;
+    
+    // Transpose
+    for (let i = 0; i < n; i++) {
+        for (let j = i; j < n; j++) {
+            [matrix[i][j], matrix[j][i]] = [matrix[j][i], matrix[i][j]];
+        }
+    }
+    
+    // Reverse each row
+    for (let i = 0; i < n; i++) {
+        matrix[i].reverse();
+    }
+}`,
+          python: `def rotate_matrix(matrix):
+    n = len(matrix)
+    
+    # Transpose
+    for i in range(n):
+        for j in range(i, n):
+            matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+    
+    # Reverse each row
+    for i in range(n):
+        matrix[i].reverse()`,
+          java: `public void rotateMatrix(int[][] matrix) {
+    int n = matrix.length;
+    
+    // Transpose
+    for (int i = 0; i < n; i++) {
+        for (int j = i; j < n; j++) {
+            int temp = matrix[i][j];
+            matrix[i][j] = matrix[j][i];
+            matrix[j][i] = temp;
+        }
+    }
+    
+    // Reverse each row
+    for (int i = 0; i < n; i++) {
+        int left = 0, right = n - 1;
+        while (left < right) {
+            int temp = matrix[i][left];
+            matrix[i][left] = matrix[i][right];
+            matrix[i][right] = temp;
+            left++;
+            right--;
+        }
+    }
+}`,
+          cpp: `void rotateMatrix(vector<vector<int>>& matrix) {
+    int n = matrix.size();
+    
+    // Transpose
+    for (int i = 0; i < n; i++) {
+        for (int j = i; j < n; j++) {
+            swap(matrix[i][j], matrix[j][i]);
+        }
+    }
+    
+    // Reverse each row
+    for (int i = 0; i < n; i++) {
+        reverse(matrix[i].begin(), matrix[i].end());
+    }
+}`,
+        },
+        problems: [
+          "Rotate Image",
+          "Spiral Matrix",
+          "Set Matrix Zeroes",
+          "Game of Life",
+        ],
+      },
+      {
+        title: "10. Breadth First Search (BFS)",
+        description: "Level-order traversal using queue",
+        useCases: [
+          "Shortest path in unweighted graphs",
+          "Level-order tree traversal",
+          "Finding all nodes at distance K",
+          "Multi-source BFS problems",
+        ],
+        code: {
+          javascript: `function bfs(graph, start) {
+    const queue = [start];
+    const seen = new Set([start]);
+    let ans = 0;
+    
+    while (queue.length) {
+        const node = queue.shift();
+        // Do some logic
+        
+        for (const neighbor of graph[node] || []) {
+            if (!seen.has(neighbor)) {
+                seen.add(neighbor);
+                queue.push(neighbor);
+            }
+        }
+    }
+    
+    return ans;
+}`,
+          python: `from collections import deque
+
+def bfs(graph, start):
+    queue = deque([start])
+    seen = {start}
+    ans = 0
+    
+    while queue:
+        node = queue.popleft()
+        # Do some logic
+        
+        for neighbor in graph.get(node, []):
+            if neighbor not in seen:
+                seen.add(neighbor)
+                queue.append(neighbor)
+    
+    return ans`,
+          java: `public int bfs(Map<Integer, List<Integer>> graph, int start) {
+    Queue<Integer> queue = new LinkedList<>();
+    Set<Integer> seen = new HashSet<>();
+    queue.add(start);
+    seen.add(start);
+    int ans = 0;
+    
+    while (!queue.isEmpty()) {
+        int node = queue.remove();
+        // do some logic
+        
+        for (int neighbor : graph.getOrDefault(node, new ArrayList<>())) {
+            if (!seen.contains(neighbor)) {
+                seen.add(neighbor);
+                queue.add(neighbor);
+            }
+        }
+    }
+    
+    return ans;
+}`,
+          cpp: `int bfs(unordered_map<int, vector<int>>& graph, int start) {
+    queue<int> q;
+    unordered_set<int> seen;
+    q.push(start);
+    seen.insert(start);
+    int ans = 0;
+    
+    while (!q.empty()) {
+        int node = q.front();
+        q.pop();
+        // do some logic
+        
+        for (int neighbor : graph[node]) {
+            if (seen.find(neighbor) == seen.end()) {
+                seen.insert(neighbor);
+                q.push(neighbor);
+            }
+        }
+    }
+    
+    return ans;
+}`,
+        },
+        problems: [
+          "Shortest Path in Binary Matrix",
+          "Rotten Oranges",
+          "As Far From Land as Possible",
+          "Word Ladder",
+        ],
+      },
+      {
+        title: "11. Depth First Search (DFS)",
+        description:
+          "Explore as far as possible along each branch before backtracking",
+        useCases: [
+          "Finding connected components",
+          "Detecting cycles in graphs",
+          "Path finding problems",
+          "Tree traversals (preorder, inorder, postorder)",
+        ],
+        code: {
+          javascript: `// Recursive DFS
+function dfs(node, graph, seen) {
+    let ans = 0;
+    
+    for (const neighbor of graph[node] || []) {
+        if (!seen.has(neighbor)) {
+            seen.add(neighbor);
+            ans += dfs(neighbor, graph, seen);
+        }
+    }
+    
+    return ans;
+}
+
+// Iterative DFS
+function dfsIterative(graph, start) {
+    const stack = [start];
+    const seen = new Set([start]);
+    let ans = 0;
+    
+    while (stack.length) {
+        const node = stack.pop();
+        // Do some logic
+        
+        for (const neighbor of graph[node] || []) {
+            if (!seen.has(neighbor)) {
+                seen.add(neighbor);
+                stack.push(neighbor);
+            }
+        }
+    }
+    
+    return ans;
+}`,
+          python: `def dfs(node, graph, seen):
+    ans = 0
+    
+    for neighbor in graph.get(node, []):
+        if neighbor not in seen:
+            seen.add(neighbor)
+            ans += dfs(neighbor, graph, seen)
+    
+    return ans
+
+def dfs_iterative(graph, start):
+    stack = [start]
+    seen = {start}
+    ans = 0
+    
+    while stack:
+        node = stack.pop()
+        # Do some logic
+        
+        for neighbor in graph.get(node, []):
+            if neighbor not in seen:
+                seen.add(neighbor)
+                stack.append(neighbor)
+    
+    return ans`,
+          java: `Set<Integer> seen = new HashSet<>();
+
+public int dfs(int node, Map<Integer, List<Integer>> graph) {
+    int ans = 0;
+    
+    for (int neighbor : graph.getOrDefault(node, new ArrayList<>())) {
+        if (!seen.contains(neighbor)) {
+            seen.add(neighbor);
+            ans += dfs(neighbor, graph);
+        }
+    }
+    
+    return ans;
+}
+
+public int dfsIterative(Map<Integer, List<Integer>> graph, int start) {
+    Stack<Integer> stack = new Stack<>();
+    Set<Integer> seen = new HashSet<>();
+    stack.push(start);
+    seen.add(start);
+    int ans = 0;
+    
+    while (!stack.empty()) {
+        int node = stack.pop();
+        // do some logic
+        
+        for (int neighbor : graph.getOrDefault(node, new ArrayList<>())) {
+            if (!seen.contains(neighbor)) {
+                seen.add(neighbor);
+                stack.push(neighbor);
+            }
+        }
+    }
+    
+    return ans;
+}`,
+          cpp: `unordered_set<int> seen;
+
+int dfs(int node, unordered_map<int, vector<int>>& graph) {
+    int ans = 0;
+    
+    for (int neighbor : graph[node]) {
+        if (seen.find(neighbor) == seen.end()) {
+            seen.insert(neighbor);
+            ans += dfs(neighbor, graph);
+        }
+    }
+    
+    return ans;
+}
+
+int dfsIterative(unordered_map<int, vector<int>>& graph, int start) {
+    stack<int> stk;
+    unordered_set<int> seen;
+    stk.push(start);
+    seen.insert(start);
+    int ans = 0;
+    
+    while (!stk.empty()) {
+        int node = stk.top();
+        stk.pop();
+        // do some logic
+        
+        for (int neighbor : graph[node]) {
+            if (seen.find(neighbor) == seen.end()) {
+                seen.insert(neighbor);
+                stk.push(neighbor);
+            }
+        }
+    }
+    
+    return ans;
+}`,
+        },
+        problems: [
+          "Number of Closed Islands",
+          "Coloring a Border",
+          "Number of Enclaves",
+          "Time Needed to Inform all Employees",
+          "Find Eventual Safe States",
+        ],
+      },
+      {
+        title: "12. Backtracking",
+        description:
+          "Build solution incrementally and backtrack when constraint violated",
+        useCases: [
+          "Generating all permutations/combinations",
+          "N-Queens problem",
+          "Sudoku solver",
+          "Word search in matrix",
+          "Subset generation",
+        ],
+        code: {
+          javascript: `function backtrack(curr, ...otherArgs) {
+    if (BASE_CASE) {
+        // Modify the answer
+        return 0;
+    }
+    
+    let ans = 0;
+    for (const option of OPTIONS) {
+        // Modify the current state
+        curr.push(option);
+        
+        ans += backtrack(curr, ...otherArgs);
+        
+        // Undo the modification (backtrack)
+        curr.pop();
+    }
+    
+    return ans;
+}`,
+          python: `def backtrack(curr, *other_args):
+    if BASE_CASE:
+        # Modify the answer
+        return 0
+    
+    ans = 0
+    for option in OPTIONS:
+        # Modify the current state
+        curr.append(option)
+        
+        ans += backtrack(curr, *other_args)
+        
+        # Undo the modification (backtrack)
+        curr.pop()
+    
+    return ans`,
+          java: `public int backtrack(List<Integer> curr, OTHER_ARGUMENTS) {
+    if (BASE_CASE) {
+        // modify the answer
+        return 0;
+    }
+    
+    int ans = 0;
+    for (ITERATE_OVER_INPUT) {
+        // modify the current state
+        curr.add(ELEMENT);
+        
+        ans += backtrack(curr, OTHER_ARGUMENTS);
+        
+        // undo the modification of the current state
+        curr.remove(curr.size() - 1);
+    }
+    
+    return ans;
+}`,
+          cpp: `int backtrack(vector<int>& curr, OTHER_ARGUMENTS) {
+    if (BASE_CASE) {
+        // modify the answer
+        return 0;
+    }
+    
+    int ans = 0;
+    for (ITERATE_OVER_INPUT) {
+        // modify the current state
+        curr.push_back(element);
+        
+        ans += backtrack(curr, OTHER_ARGUMENTS);
+        
+        // undo the modification of the current state
+        curr.pop_back();
+    }
+    
+    return ans;
+}`,
+        },
+        problems: [
+          "Permutation II",
+          "Combination Sum",
+          "Generate Parenthesis",
+          "N-Queens",
+          "Sudoku Solver",
+          "Palindrome Partitioning",
+          "Word Search",
+        ],
+      },
+      {
+        title: "13. Modified Binary Search",
+        description:
+          "Binary search on rotated arrays, finding boundaries, or answer space",
+        useCases: [
+          "Search in rotated sorted array",
+          "Finding peak element",
+          "Finding minimum in rotated array",
+          "Finding square root",
+          "Capacity/speed optimization problems",
+        ],
+        categories: [
+          {
+            category: "Standard Binary Search",
+            problems: [
+              "Search in Rotated Sorted Array",
+              "Find Minimum in Rotated Sorted Array",
+              "Find Peak Element",
+              "Single element in a sorted array",
+            ],
+          },
+          {
+            category: "Binary Search on Answer",
+            problems: [
+              "Minimum Time to Arrive on Time",
+              "Capacity to Ship Packages within 'd' Days",
+              "Koko Eating Bananas",
+              "Find in Mountain Array",
+              "Median of Two Sorted Arrays",
+            ],
+          },
+        ],
+        code: {
+          javascript: `// Standard Binary Search
+function binarySearch(arr, target) {
+    let left = 0;
+    let right = arr.length - 1;
+    
+    while (left <= right) {
+        const mid = Math.floor((left + right) / 2);
+        
+        if (arr[mid] === target) {
+            return mid;
+        }
+        
+        if (arr[mid] > target) {
+            right = mid - 1;
+        } else {
+            left = mid + 1;
+        }
+    }
+    
+    return left; // insertion point
+}
+
+// Binary Search for Minimum (Greedy)
+function binarySearchMin(arr) {
+    let left = MIN_ANSWER;
+    let right = MAX_ANSWER;
+    
+    while (left <= right) {
+        const mid = Math.floor((left + right) / 2);
+        
+        if (check(mid)) {
+            right = mid - 1;
+        } else {
+            left = mid + 1;
+        }
+    }
+    
+    return left;
+}
+
+// Binary Search for Maximum (Greedy)
+function binarySearchMax(arr) {
+    let left = MIN_ANSWER;
+    let right = MAX_ANSWER;
+    
+    while (left <= right) {
+        const mid = Math.floor((left + right) / 2);
+        
+        if (check(mid)) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+    
+    return right;
+}`,
+          python: `def binary_search(arr, target):
+    left = 0
+    right = len(arr) - 1
+    
+    while left <= right:
+        mid = (left + right) // 2
+        
+        if arr[mid] == target:
+            return mid
+        
+        if arr[mid] > target:
+            right = mid - 1
+        else:
+            left = mid + 1
+    
+    return left
+
+def binary_search_min(arr):
+    left = MIN_ANSWER
+    right = MAX_ANSWER
+    
+    while left <= right:
+        mid = (left + right) // 2
+        
+        if check(mid):
+            right = mid - 1
+        else:
+            left = mid + 1
+    
+    return left
+
+def binary_search_max(arr):
+    left = MIN_ANSWER
+    right = MAX_ANSWER
+    
+    while left <= right:
+        mid = (left + right) // 2
+        
+        if check(mid):
+            left = mid + 1
+        else:
+            right = mid - 1
+    
+    return right`,
+          java: `public int binarySearch(int[] arr, int target) {
+    int left = 0;
+    int right = arr.length - 1;
+    
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        
+        if (arr[mid] == target) {
+            return mid;
+        }
+        
+        if (arr[mid] > target) {
+            right = mid - 1;
+        } else {
+            left = mid + 1;
+        }
+    }
+    
+    return left;
+}
+
+public int binarySearchMin(int[] arr) {
+    int left = MINIMUM_POSSIBLE_ANSWER;
+    int right = MAXIMUM_POSSIBLE_ANSWER;
+    
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        
+        if (check(mid)) {
+            right = mid - 1;
+        } else {
+            left = mid + 1;
+        }
+    }
+    
+    return left;
+}
+
+public int binarySearchMax(int[] arr) {
+    int left = MINIMUM_POSSIBLE_ANSWER;
+    int right = MAXIMUM_POSSIBLE_ANSWER;
+    
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        
+        if (check(mid)) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+    
+    return right;
+}`,
+          cpp: `int binarySearch(vector<int>& arr, int target) {
+    int left = 0;
+    int right = arr.size() - 1;
+    
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        
+        if (arr[mid] == target) {
+            return mid;
+        }
+        
+        if (arr[mid] > target) {
+            right = mid - 1;
+        } else {
+            left = mid + 1;
+        }
+    }
+    
+    return left;
+}
+
+int binarySearchMin(vector<int>& arr) {
+    int left = MINIMUM_POSSIBLE_ANSWER;
+    int right = MAXIMUM_POSSIBLE_ANSWER;
+    
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        
+        if (check(mid)) {
+            right = mid - 1;
+        } else {
+            left = mid + 1;
+        }
+    }
+    
+    return left;
+}
+
+int binarySearchMax(vector<int>& arr) {
+    int left = MINIMUM_POSSIBLE_ANSWER;
+    int right = MAXIMUM_POSSIBLE_ANSWER;
+    
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        
+        if (check(mid)) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+    
+    return right;
+}`,
+        },
+      },
+      {
+        title: "14. Bitwise XOR",
+        description: "Use XOR properties to find unique elements",
+        useCases: [
+          "Finding missing number",
+          "Finding single number in array",
+          "XOR queries on subarrays",
+          "Detecting duplicate numbers",
+        ],
+        code: {
+          javascript: `// Find Missing Number
+function findMissing(arr) {
+    let xor = 0;
+    
+    // XOR all array elements
+    for (const num of arr) {
+        xor ^= num;
+    }
+    
+    // XOR with all numbers from 0 to n
+    for (let i = 0; i <= arr.length; i++) {
+        xor ^= i;
+    }
+    
+    return xor;
+}
+
+// Single Number
+function singleNumber(arr) {
+    let xor = 0;
+    for (const num of arr) {
+        xor ^= num;
+    }
+    return xor;
+}`,
+          python: `def find_missing(arr):
+    xor = 0
+    
+    # XOR all array elements
+    for num in arr:
+        xor ^= num
+    
+    # XOR with all numbers from 0 to n
+    for i in range(len(arr) + 1):
+        xor ^= i
+    
+    return xor
+
+def single_number(arr):
+    xor = 0
+    for num in arr:
+        xor ^= num
+    return xor`,
+          java: `public int findMissing(int[] arr) {
+    int xor = 0;
+    
+    // XOR all array elements
+    for (int num : arr) {
+        xor ^= num;
+    }
+    
+    // XOR with all numbers from 0 to n
+    for (int i = 0; i <= arr.length; i++) {
+        xor ^= i;
+    }
+    
+    return xor;
+}
+
+public int singleNumber(int[] arr) {
+    int xor = 0;
+    for (int num : arr) {
+        xor ^= num;
+    }
+    return xor;
+}`,
+          cpp: `int findMissing(vector<int>& arr) {
+    int xor_val = 0;
+    
+    // XOR all array elements
+    for (int num : arr) {
+        xor_val ^= num;
+    }
+    
+    // XOR with all numbers from 0 to n
+    for (int i = 0; i <= arr.size(); i++) {
+        xor_val ^= i;
+    }
+    
+    return xor_val;
+}
+
+int singleNumber(vector<int>& arr) {
+    int xor_val = 0;
+    for (int num : arr) {
+        xor_val ^= num;
+    }
+    return xor_val;
+}`,
+        },
+        problems: [
+          "Missing Number",
+          "Single Number II",
+          "Single Number III",
+          "Find the Original array of Prefix XOR",
+          "XOR Queries of a Subarray",
+        ],
+      },
+      {
+        title: "15. Top 'K' Elements",
+        description: "Use heap to efficiently find K largest/smallest elements",
+        useCases: [
+          "Finding K largest/smallest elements",
+          "K closest points to origin",
+          "Top K frequent elements",
+          "Kth largest element in stream",
+        ],
+        code: {
+          javascript: `function topKElements(arr, k) {
+    const heap = new MinHeap(); // or MaxHeap based on problem
+    
+    for (const num of arr) {
+        heap.push(num);
+        
+        if (heap.size() > k) {
+            heap.pop();
+        }
+    }
+    
+    return heap.toArray();
+}
+
+// Using built-in sort (less optimal)
+function topKSimple(arr, k) {
+    return arr.sort((a, b) => b - a).slice(0, k);
+}`,
+          python: `import heapq
+
+def top_k_elements(arr, k):
+    heap = []
+    
+    for num in arr:
+        heapq.heappush(heap, num)
+        
+        if len(heap) > k:
+            heapq.heappop(heap)
+    
+    return heap
+
+# Using nlargest/nsmallest
+def top_k_simple(arr, k):
+    return heapq.nlargest(k, arr)`,
+          java: `public int[] topKElements(int[] arr, int k) {
+    PriorityQueue<Integer> heap = new PriorityQueue<>();
+    
+    for (int num : arr) {
+        heap.add(num);
+        
+        if (heap.size() > k) {
+            heap.remove();
+        }
+    }
+    
+    int[] ans = new int[k];
+    for (int i = 0; i < k; i++) {
+        ans[i] = heap.remove();
+    }
+    
+    return ans;
+}`,
+          cpp: `vector<int> topKElements(vector<int>& arr, int k) {
+    priority_queue<int, vector<int>, greater<int>> heap;
+    
+    for (int num : arr) {
+        heap.push(num);
+        
+        if (heap.size() > k) {
+            heap.pop();
+        }
+    }
+    
+    vector<int> ans;
+    while (!heap.empty()) {
+        ans.push_back(heap.top());
+        heap.pop();
+    }
+    
+    return ans;
+}`,
+        },
+        problems: [
+          "Top K Frequent Elements",
+          "Kth Largest Element",
+          "Ugly Number II",
+          "K Closest Points to Origin",
+        ],
+      },
+      {
+        title: "16. K-way Merge",
+        description: "Merge K sorted lists using heap",
+        useCases: [
+          "Merging K sorted arrays/lists",
+          "Finding smallest range covering K lists",
+          "Kth smallest in sorted matrix",
+          "Finding K pairs with smallest sums",
+        ],
+        code: {
+          javascript: `function mergeKLists(lists) {
+    const heap = new MinHeap();
+    
+    // Add first element from each list
+    for (let i = 0; i < lists.length; i++) {
+        if (lists[i]) {
+            heap.push({ val: lists[i].val, listIdx: i, node: lists[i] });
+        }
+    }
+    
+    const dummy = new ListNode(0);
+    let curr = dummy;
+    
+    while (heap.size() > 0) {
+        const { node, listIdx } = heap.pop();
+        curr.next = node;
+        curr = curr.next;
+        
+        if (node.next) {
+            heap.push({ val: node.next.val, listIdx, node: node.next });
+        }
+    }
+    
+    return dummy.next;
+}`,
+          python: `import heapq
+
+def merge_k_lists(lists):
+    heap = []
+    
+    # Add first element from each list
+    for i in range(len(lists)):
+        if lists[i]:
+            heapq.heappush(heap, (lists[i].val, i, lists[i]))
+    
+    dummy = ListNode(0)
+    curr = dummy
+    
+    while heap:
+        val, list_idx, node = heapq.heappop(heap)
+        curr.next = node
+        curr = curr.next
+        
+        if node.next:
+            heapq.heappush(heap, (node.next.val, list_idx, node.next))
+    
+    return dummy.next`,
+          java: `public ListNode mergeKLists(ListNode[] lists) {
+    PriorityQueue<ListNode> heap = new PriorityQueue<>((a, b) -> a.val - b.val);
+    
+    // Add first element from each list
+    for (ListNode node : lists) {
+        if (node != null) {
+            heap.add(node);
+        }
+    }
+    
+    ListNode dummy = new ListNode(0);
+    ListNode curr = dummy;
+    
+    while (!heap.isEmpty()) {
+        ListNode node = heap.remove();
+        curr.next = node;
+        curr = curr.next;
+        
+        if (node.next != null) {
+            heap.add(node.next);
+        }
+    }
+    
+    return dummy.next;
+}`,
+          cpp: `ListNode* mergeKLists(vector<ListNode*>& lists) {
+    auto cmp = [](ListNode* a, ListNode* b) { return a->val > b->val; };
+    priority_queue<ListNode*, vector<ListNode*>, decltype(cmp)> heap(cmp);
+    
+    // Add first element from each list
+    for (ListNode* node : lists) {
+        if (node) {
+            heap.push(node);
+        }
+    }
+    
+    ListNode* dummy = new ListNode(0);
+    ListNode* curr = dummy;
+    
+    while (!heap.empty()) {
+        ListNode* node = heap.top();
+        heap.pop();
+        curr->next = node;
+        curr = curr->next;
+        
+        if (node->next) {
+            heap.push(node->next);
+        }
+    }
+    
+    return dummy->next;
+}`,
+        },
+        problems: [
+          "Find K Pairs with Smallest Sums",
+          "Kth Smallest Element in a Sorted Matrix",
+          "Merge K Sorted Lists",
+          "Smallest Range Covering Elements from K Lists",
+        ],
+      },
+      {
+        title: "17. Two Heaps",
+        description: "Use min heap and max heap to track median or split data",
+        useCases: [
+          "Finding median in data stream",
+          "Sliding window median",
+          "IPO problem",
+          "Split data into two halves dynamically",
+        ],
+        code: {
+          javascript: `class MedianFinder {
+    constructor() {
+        this.maxHeap = new MaxHeap(); // left half
+        this.minHeap = new MinHeap(); // right half
+    }
+    
+    addNum(num) {
+        // Add to max heap first
+        this.maxHeap.push(num);
+        
+        // Balance: move largest from max to min
+        this.minHeap.push(this.maxHeap.pop());
+        
+        // If min heap is larger, rebalance
+        if (this.minHeap.size() > this.maxHeap.size()) {
+            this.maxHeap.push(this.minHeap.pop());
+        }
+    }
+    
+    findMedian() {
+        if (this.maxHeap.size() > this.minHeap.size()) {
+            return this.maxHeap.peek();
+        }
+        return (this.maxHeap.peek() + this.minHeap.peek()) / 2;
+    }
+}`,
+          python: `import heapq
+
+class MedianFinder:
+    def __init__(self):
+        self.max_heap = []  # left half (invert for max heap)
+        self.min_heap = []  # right half
+    
+    def addNum(self, num):
+        # Add to max heap first (negate for max heap behavior)
+        heapq.heappush(self.max_heap, -num)
+        
+        # Balance: move largest from max to min
+        heapq.heappush(self.min_heap, -heapq.heappop(self.max_heap))
+        
+        # If min heap is larger, rebalance
+        if len(self.min_heap) > len(self.max_heap):
+            heapq.heappush(self.max_heap, -heapq.heappop(self.min_heap))
+    
+    def findMedian(self):
+        if len(self.max_heap) > len(self.min_heap):
+            return -self.max_heap[0]
+        return (-self.max_heap[0] + self.min_heap[0]) / 2`,
+          java: `class MedianFinder {
+    PriorityQueue<Integer> maxHeap; // left half
+    PriorityQueue<Integer> minHeap; // right half
+    
+    public MedianFinder() {
+        maxHeap = new PriorityQueue<>((a, b) -> b - a);
+        minHeap = new PriorityQueue<>();
+    }
+    
+    public void addNum(int num) {
+        // Add to max heap first
+        maxHeap.add(num);
+        
+        // Balance: move largest from max to min
+        minHeap.add(maxHeap.remove());
+        
+        // If min heap is larger, rebalance
+        if (minHeap.size() > maxHeap.size()) {
+            maxHeap.add(minHeap.remove());
+        }
+    }
+    
+    public double findMedian() {
+        if (maxHeap.size() > minHeap.size()) {
+            return maxHeap.peek();
+        }
+        return (maxHeap.peek() + minHeap.peek()) / 2.0;
+    }
+}`,
+          cpp: `class MedianFinder {
+    priority_queue<int> maxHeap; // left half
+    priority_queue<int, vector<int>, greater<int>> minHeap; // right half
+    
+public:
+    MedianFinder() {}
+    
+    void addNum(int num) {
+        // Add to max heap first
+        maxHeap.push(num);
+        
+        // Balance: move largest from max to min
+        minHeap.push(maxHeap.top());
+        maxHeap.pop();
+        
+        // If min heap is larger, rebalance
+        if (minHeap.size() > maxHeap.size()) {
+            maxHeap.push(minHeap.top());
+            minHeap.pop();
+        }
+    }
+    
+    double findMedian() {
+        if (maxHeap.size() > minHeap.size()) {
+            return maxHeap.top();
+        }
+        return (maxHeap.top() + minHeap.top()) / 2.0;
+    }
+};`,
+        },
+        problems: [
+          "Find Median from Data Stream",
+          "Sliding Window Median",
+          "IPO",
+        ],
+      },
+      {
+        title: "18. Monotonic Stack",
+        description: "Stack maintaining monotonic increasing/decreasing order",
+        useCases: [
+          "Next greater/smaller element",
+          "Daily temperatures",
+          "Largest rectangle in histogram",
+          "Stock span problems",
+        ],
+        code: {
+          javascript: `function monotonicStack(arr) {
+    const stack = [];
+    const ans = new Array(arr.length);
+    
+    for (let i = 0; i < arr.length; i++) {
+        // For monotonic decreasing, flip > to 
+        while (stack.length && arr[stack[stack.length - 1]] > arr[i]) {
+            const idx = stack.pop();
+            // Do logic with idx
+            ans[idx] = i - idx;
+        }
+        stack.push(i);
+    }
+    
+    return ans;
+}`,
+          python: `def monotonic_stack(arr):
+    stack = []
+    ans = [0] * len(arr)
+    
+    for i in range(len(arr)):
+        # For monotonic decreasing, flip > to 
+        while stack and arr[stack[-1]] > arr[i]:
+            idx = stack.pop()
+            # Do logic with idx
+            ans[idx] = i - idx
+        stack.append(i)
+    
+    return ans`,
+          java: `public int[] monotonicStack(int[] arr) {
+    Stack<Integer> stack = new Stack<>();
+    int[] ans = new int[arr.length];
+    
+    for (int i = 0; i < arr.length; i++) {
+        // For monotonic decreasing, just flip the > to 
+        while (!stack.empty() && arr[stack.peek()] > arr[i]) {
+            int idx = stack.pop();
+            // do logic with idx
+            ans[idx] = i - idx;
+        }
+        stack.push(i);
+    }
+    
+    return ans;
+}`,
+          cpp: `vector<int> monotonicStack(vector<int>& arr) {
+    stack<int> stk;
+    vector<int> ans(arr.size());
+    
+    for (int i = 0; i < arr.size(); i++) {
+        // For monotonic decreasing, just flip the > to 
+        while (!stk.empty() && arr[stk.top()] > arr[i]) {
+            int idx = stk.top();
+            stk.pop();
+            // do logic with idx
+            ans[idx] = i - idx;
+        }
+        stk.push(i);
+    }
+    
+    return ans;
+}`,
+        },
+        problems: [
+          "Next Greater Element II",
+          "Next Greater Node in Linked List",
           "Daily Temperatures",
-          "Next Greater Element",
+          "Online Stock Span",
+          "Maximum Width Ramp",
           "Largest Rectangle in Histogram",
+        ],
+      },
+      {
+        title: "19. Binary Tree Traversals",
+        description: "DFS and BFS approaches for tree problems",
+        categories: [
+          {
+            category: "Level Order Traversal (BFS)",
+            problems: [
+              "Level order Traversal",
+              "Zigzag Level order Traversal",
+              "Even Odd Tree",
+              "Reverse odd Levels",
+              "Deepest Leaves Sum",
+              "Add one row to Tree",
+              "Maximum width of Binary Tree",
+              "All Nodes Distance K in Binary tree",
+            ],
+          },
+          {
+            category: "Tree Construction",
+            problems: [
+              "Construct BT from Preorder and Inorder",
+              "Construct BT from Postorder and Inorder",
+              "Maximum Binary Tree",
+              "Construct BST from Preorder",
+            ],
+          },
+          {
+            category: "Height Related",
+            problems: [
+              "Maximum Depth of BT",
+              "Balanced Binary Tree",
+              "Diameter of Binary Tree",
+              "Minimum Depth of BT",
+            ],
+          },
+          {
+            category: "Root to Leaf Path",
+            problems: [
+              "Binary Tree Paths",
+              "Path Sum II",
+              "Sum Root to Leaf numbers",
+              "Smallest string starting from Leaf",
+              "Insufficient nodes in root to Leaf",
+              "Pseudo-Palindromic Paths in a Binary Tree",
+              "Binary Tree Maximum Path Sum",
+            ],
+          },
+          {
+            category: "Ancestor Problems",
+            problems: [
+              "LCA of Binary Tree",
+              "Maximum difference between node and ancestor",
+              "LCA of deepest leaves",
+              "Kth Ancestor of a Tree Node",
+            ],
+          },
+          {
+            category: "Binary Search Tree",
+            problems: [
+              "Validate BST",
+              "Range Sum of BST",
+              "Minimum Absolute Difference in BST",
+              "Insert into a BST",
+              "LCA of BST",
+            ],
+          },
+        ],
+        code: {
+          javascript: `// DFS - Recursive
+function dfs(root) {
+    if (!root) return 0;
+    
+    let ans = 0;
+    // Do logic
+    dfs(root.left);
+    dfs(root.right);
+    
+    return ans;
+}
+
+// DFS - Iterative
+function dfsIterative(root) {
+    const stack = [root];
+    let ans = 0;
+    
+    while (stack.length) {
+        const node = stack.pop();
+        // Do logic
+        
+        if (node.right) stack.push(node.right);
+        if (node.left) stack.push(node.left);
+    }
+    
+    return ans;
+}
+
+// BFS - Level Order
+function bfs(root) {
+    const queue = [root];
+    let ans = 0;
+    
+    while (queue.length) {
+        const levelSize = queue.length;
+        
+        for (let i = 0; i < levelSize; i++) {
+            const node = queue.shift();
+            // Do logic
+            
+            if (node.left) queue.push(node.left);
+            if (node.right) queue.push(node.right);
+        }
+    }
+    
+    return ans;
+}`,
+          python: `def dfs(root):
+    if not root:
+        return 0
+    
+    ans = 0
+    # Do logic
+    dfs(root.left)
+    dfs(root.right)
+    
+    return ans
+
+def dfs_iterative(root):
+    stack = [root]
+    ans = 0
+    
+    while stack:
+        node = stack.pop()
+        # Do logic
+        
+        if node.right:
+            stack.append(node.right)
+        if node.left:
+            stack.append(node.left)
+    
+    return ans
+
+from collections import deque
+
+def bfs(root):
+    queue = deque([root])
+    ans = 0
+    
+    while queue:
+        level_size = len(queue)
+        
+        for _ in range(level_size):
+            node = queue.popleft()
+            # Do logic
+            
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+    
+    return ans`,
+          java: `public int dfs(TreeNode root) {
+    if (root == null) {
+        return 0;
+    }
+    
+    int ans = 0;
+    // do logic
+    dfs(root.left);
+    dfs(root.right);
+    
+    return ans;
+}
+
+public int dfsIterative(TreeNode root) {
+    Stack<TreeNode> stack = new Stack<>();
+    stack.push(root);
+    int ans = 0;
+    
+    while (!stack.empty()) {
+        TreeNode node = stack.pop();
+        // do logic
+        
+        if (node.right != null) {
+            stack.push(node.right);
+        }
+        if (node.left != null) {
+            stack.push(node.left);
+        }
+    }
+    
+    return ans;
+}
+
+public int bfs(TreeNode root) {
+    Queue<TreeNode> queue = new LinkedList<>();
+    queue.add(root);
+    int ans = 0;
+    
+    while (!queue.isEmpty()) {
+        int currentLength = queue.size();
+        
+        for (int i = 0; i < currentLength; i++) {
+            TreeNode node = queue.remove();
+            // do logic
+            
+            if (node.left != null) {
+                queue.add(node.left);
+            }
+            if (node.right != null) {
+                queue.add(node.right);
+            }
+        }
+    }
+    
+    return ans;
+}`,
+          cpp: `int dfs(TreeNode* root) {
+    if (!root) {
+        return 0;
+    }
+    
+    int ans = 0;
+    // do logic
+    dfs(root->left);
+    dfs(root->right);
+    
+    return ans;
+}
+
+int dfsIterative(TreeNode* root) {
+    stack<TreeNode*> stk;
+    stk.push(root);
+    int ans = 0;
+    
+    while (!stk.empty()) {
+        TreeNode* node = stk.top();
+        stk.pop();
+        // do logic
+        
+        if (node->right) {
+            stk.push(node->right);
+        }
+        if (node->left) {
+            stk.push(node->left);
+        }
+    }
+    
+    return ans;
+}
+
+int bfs(TreeNode* root) {
+    queue<TreeNode*> q;
+    q.push(root);
+    int ans = 0;
+    
+    while (!q.empty()) {
+        int currentLength = q.size();
+        
+        for (int i = 0; i < currentLength; i++) {
+            TreeNode* node = q.front();
+            q.pop();
+            // do logic
+            
+            if (node->left) {
+                q.push(node->left);
+            }
+            if (node->right) {
+                q.push(node->right);
+            }
+        }
+    }
+    
+    return ans;
+}`,
+        },
+      },
+      {
+        title: "20. Dynamic Programming",
+        description: "Break down problems into overlapping subproblems",
+        categories: [
+          {
+            category: "0/1 Knapsack (Take/Not Take)",
+            problems: [
+              "House Robber II",
+              "Target Sum",
+              "Partition Equal Subset Sum",
+              "Ones and Zeroes",
+              "Last Stone Weight II",
+            ],
+          },
+          {
+            category: "Infinite Supply (Unbounded Knapsack)",
+            problems: [
+              "Coin Change",
+              "Coin Change II",
+              "Perfect Squares",
+              "Minimum Cost For Tickets",
+            ],
+          },
+          {
+            category: "Longest Increasing Subsequence",
+            problems: [
+              "Longest Increasing Subsequence",
+              "Largest Divisible Subset",
+              "Maximum Length of Pair Chain",
+              "Number of LIS",
+              "Longest String Chain",
+            ],
+          },
+          {
+            category: "DP on Grids",
+            problems: [
+              "Unique Paths II",
+              "Minimum Path Sum",
+              "Triangle",
+              "Minimum Falling Path Sum",
+              "Maximal Square",
+              "Cherry Pickup",
+              "Dungeon Game",
+            ],
+          },
+          {
+            category: "DP on Strings",
+            problems: [
+              "Longest Common Subsequence",
+              "Longest Palindromic Subsequence",
+              "Palindromic Substrings",
+              "Longest Palindromic Substring",
+              "Edit Distance",
+              "Minimum ASCII Delete Sum for Two Strings",
+              "Distinct Subsequences",
+              "Shortest Common Supersequence",
+              "Wildcard Matching",
+            ],
+          },
+          {
+            category: "DP on Stocks",
+            problems: [
+              "Buy and Sell Stocks II",
+              "Buy and Sell Stocks III",
+              "Buy and Sell Stocks IV",
+              "Buy and Sell Stocks with Cooldown",
+              "Buy and Sell Stocks with Transaction Fee",
+            ],
+          },
+        ],
+        code: {
+          javascript: `// Top-Down Memoization
+function dp(state, memo = new Map()) {
+    if (BASE_CASE) {
+        return 0;
+    }
+    
+    const key = JSON.stringify(state);
+    if (memo.has(key)) {
+        return memo.get(key);
+    }
+    
+    const ans = RECURRENCE_RELATION(state);
+    memo.set(key, ans);
+    
+    return ans;
+}
+
+// Bottom-Up Tabulation
+function dpTabulation(n) {
+    const dp = new Array(n + 1).fill(0);
+    dp[0] = BASE_CASE;
+    
+    for (let i = 1; i <= n; i++) {
+        dp[i] = RECURRENCE_RELATION(dp, i);
+    }
+    
+    return dp[n];
+}`,
+          python: `def dp(state, memo={}):
+    if BASE_CASE:
+        return 0
+    
+    if state in memo:
+        return memo[state]
+    
+    ans = RECURRENCE_RELATION(state)
+    memo[state] = ans
+    
+    return ans
+
+def dp_tabulation(n):
+    dp = [0] * (n + 1)
+    dp[0] = BASE_CASE
+    
+    for i in range(1, n + 1):
+        dp[i] = RECURRENCE_RELATION(dp, i)
+    
+    return dp[n]`,
+          java: `Map<String, Integer> memo = new HashMap<>();
+
+public int dp(STATE state) {
+    if (BASE_CASE) {
+        return 0;
+    }
+    
+    String key = state.toString();
+    if (memo.containsKey(key)) {
+        return memo.get(key);
+    }
+    
+    int ans = RECURRENCE_RELATION(state);
+    memo.put(key, ans);
+    
+    return ans;
+}
+
+public int dpTabulation(int n) {
+    int[] dp = new int[n + 1];
+    dp[0] = BASE_CASE;
+    
+    for (int i = 1; i <= n; i++) {
+        dp[i] = RECURRENCE_RELATION(dp, i);
+    }
+    
+    return dp[n];
+}`,
+          cpp: `unordered_map<string, int> memo;
+
+int dp(STATE state) {
+    if (BASE_CASE) {
+        return 0;
+    }
+    
+    string key = to_string(state);
+    if (memo.find(key) != memo.end()) {
+        return memo[key];
+    }
+    
+    int ans = RECURRENCE_RELATION(state);
+    memo[key] = ans;
+    
+    return ans;
+}
+
+int dpTabulation(int n) {
+    vector<int> dp(n + 1, 0);
+    dp[0] = BASE_CASE;
+    
+    for (int i = 1; i <= n; i++) {
+        dp[i] = RECURRENCE_RELATION(dp, i);
+    }
+    
+    return dp[n];
+}`,
+        },
+      },
+      {
+        title: "21. Graph Algorithms",
+        description: "Advanced graph traversal and topological sorting",
+        categories: [
+          {
+            category: "Topological Sort",
+            problems: [
+              "Course Schedule",
+              "Course Schedule II",
+              "Strange Printer II",
+              "Sequence Reconstruction",
+              "Alien Dictionary",
+            ],
+          },
+          {
+            category: "Union-Find",
+            problems: [
+              "Number of Operations to Make Network Connected",
+              "Redundant Connection",
+              "Accounts Merge",
+              "Satisfiability of Equality Equations",
+            ],
+          },
+        ],
+        code: {
+          javascript: `// Union-Find (Disjoint Set)
+class UnionFind {
+    constructor(n) {
+        this.parent = Array.from({ length: n }, (_, i) => i);
+        this.rank = new Array(n).fill(1);
+    }
+    
+    find(x) {
+        if (this.parent[x] !== x) {
+            this.parent[x] = this.find(this.parent[x]); // Path compression
+        }
+        return this.parent[x];
+    }
+    
+    union(x, y) {
+        const rootX = this.find(x);
+        const rootY = this.find(y);
+        
+        if (rootX === rootY) return false;
+        
+        // Union by rank
+        if (this.rank[rootX] > this.rank[rootY]) {
+            this.parent[rootY] = rootX;
+        } else if (this.rank[rootX] < this.rank[rootY]) {
+            this.parent[rootX] = rootY;
+        } else {
+            this.parent[rootY] = rootX;
+            this.rank[rootX]++;
+        }
+        
+        return true;
+    }
+}`,
+          python: `class UnionFind:
+    def __init__(self, n):
+        self.parent = list(range(n))
+        self.rank = [1] * n
+    
+    def find(self, x):
+        if self.parent[x] != x:
+            self.parent[x] = self.find(self.parent[x])
+        return self.parent[x]
+    
+    def union(self, x, y):
+        root_x = self.find(x)
+        root_y = self.find(y)
+        
+        if root_x == root_y:
+            return False
+        
+        if self.rank[root_x] > self.rank[root_y]:
+            self.parent[root_y] = root_x
+        elif self.rank[root_x] < self.rank[root_y]:
+            self.parent[root_x] = root_y
+        else:
+            self.parent[root_y] = root_x
+            self.rank[root_x] += 1
+        
+        return True`,
+          java: `class UnionFind {
+    private int[] parent;
+    private int[] rank;
+    
+    public UnionFind(int n) {
+        parent = new int[n];
+        rank = new int[n];
+        for (int i = 0; i < n; i++) {
+            parent[i] = i;
+            rank[i] = 1;
+        }
+    }
+    
+    public int find(int x) {
+        if (parent[x] != x) {
+            parent[x] = find(parent[x]);
+        }
+        return parent[x];
+    }
+    
+    public boolean union(int x, int y) {
+        int rootX = find(x);
+        int rootY = find(y);
+        
+        if (rootX == rootY) return false;
+        
+        if (rank[rootX] > rank[rootY]) {
+            parent[rootY] = rootX;
+        } else if (rank[rootX] < rank[rootY]) {
+            parent[rootX] = rootY;
+        } else {
+            parent[rootY] = rootX;
+            rank[rootX]++;
+        }
+        
+        return true;
+    }
+}`,
+          cpp: `class UnionFind {
+    vector<int> parent;
+    vector<int> rank;
+    
+public:
+    UnionFind(int n) {
+        parent.resize(n);
+        rank.resize(n, 1);
+        for (int i = 0; i < n; i++) {
+            parent[i] = i;
+        }
+    }
+    
+    int find(int x) {
+        if (parent[x] != x) {
+            parent[x] = find(parent[x]);
+        }
+        return parent[x];
+    }
+    
+    bool unite(int x, int y) {
+        int rootX = find(x);
+        int rootY = find(y);
+        
+        if (rootX == rootY) return false;
+        
+        if (rank[rootX] > rank[rootY]) {
+            parent[rootY] = rootX;
+        } else if (rank[rootX] < rank[rootY]) {
+            parent[rootX] = rootY;
+        } else {
+            parent[rootY] = rootX;
+            rank[rootX]++;
+        }
+        
+        return true;
+    }
+};`,
+        },
+      },
+      {
+        title: "22. Greedy Algorithms",
+        description: "Make locally optimal choice at each step",
+        useCases: [
+          "Jump game problems",
+          "Activity selection",
+          "Fractional knapsack",
+          "Huffman coding",
+        ],
+        code: {
+          javascript: `// Jump Game II - Greedy
+function jumpGame(nums) {
+    let jumps = 0;
+    let currentEnd = 0;
+    let farthest = 0;
+    
+    for (let i = 0; i < nums.length - 1; i++) {
+        farthest = Math.max(farthest, i + nums[i]);
+        
+        if (i === currentEnd) {
+            jumps++;
+            currentEnd = farthest;
+        }
+    }
+    
+    return jumps;
+}`,
+          python: `def jump_game(nums):
+    jumps = 0
+    current_end = 0
+    farthest = 0
+    
+    for i in range(len(nums) - 1):
+        farthest = max(farthest, i + nums[i])
+        
+        if i == current_end:
+            jumps += 1
+            current_end = farthest
+    
+    return jumps`,
+          java: `public int jumpGame(int[] nums) {
+    int jumps = 0;
+    int currentEnd = 0;
+    int farthest = 0;
+    
+    for (int i = 0; i < nums.length - 1; i++) {
+        farthest = Math.max(farthest, i + nums[i]);
+        
+        if (i == currentEnd) {
+            jumps++;
+            currentEnd = farthest;
+        }
+    }
+    
+    return jumps;
+}`,
+          cpp: `int jumpGame(vector<int>& nums) {
+    int jumps = 0;
+    int currentEnd = 0;
+    int farthest = 0;
+    
+    for (int i = 0; i < nums.size() - 1; i++) {
+        farthest = max(farthest, i + nums[i]);
+        
+        if (i == currentEnd) {
+            jumps++;
+            currentEnd = farthest;
+        }
+    }
+    
+    return jumps;
+}`,
+        },
+        problems: [
+          "Jump Game II",
+          "Gas Station",
+          "Bag of Tokens",
+          "Boats to Save People",
+          "Wiggle Subsequence",
+          "Car Pooling",
+          "Candy",
+        ],
+      },
+      {
+        title: "23. Trie (Prefix Tree)",
+        description: "Tree structure for efficient string operations",
+        useCases: [
+          "Autocomplete systems",
+          "Spell checkers",
+          "IP routing tables",
+          "Word search problems",
+        ],
+        code: {
+          javascript: `class TrieNode {
+    constructor() {
+        this.children = {};
+        this.isEnd = false;
+    }
+}
+
+class Trie {
+    constructor() {
+        this.root = new TrieNode();
+    }
+    
+    insert(word) {
+        let node = this.root;
+        for (const char of word) {
+            if (!node.children[char]) {
+                node.children[char] = new TrieNode();
+            }
+            node = node.children[char];
+        }
+        node.isEnd = true;
+    }
+    
+    search(word) {
+        let node = this.root;
+        for (const char of word) {
+            if (!node.children[char]) {
+                return false;
+            }
+            node = node.children[char];
+        }
+        return node.isEnd;
+    }
+    
+    startsWith(prefix) {
+        let node = this.root;
+        for (const char of prefix) {
+            if (!node.children[char]) {
+                return false;
+            }
+            node = node.children[char];
+        }
+        return true;
+    }
+}`,
+          python: `class TrieNode:
+    def __init__(self):
+        self.children = {}
+        self.is_end = False
+
+class Trie:
+    def __init__(self):
+        self.root = TrieNode()
+    
+    def insert(self, word):
+        node = self.root
+        for char in word:
+            if char not in node.children:
+                node.children[char] = TrieNode()
+            node = node.children[char]
+        node.is_end = True
+    
+    def search(self, word):
+        node = self.root
+        for char in word:
+            if char not in node.children:
+                return False
+            node = node.children[char]
+        return node.is_end
+    
+    def starts_with(self, prefix):
+        node = self.root
+        for char in prefix:
+            if char not in node.children:
+                return False
+            node = node.children[char]
+        return True`,
+          java: `class TrieNode {
+    Map<Character, TrieNode> children = new HashMap<>();
+    boolean isEnd = false;
+}
+
+class Trie {
+    TrieNode root = new TrieNode();
+    
+    public void insert(String word) {
+        TrieNode node = root;
+        for (char c : word.toCharArray()) {
+            if (!node.children.containsKey(c)) {
+                node.children.put(c, new TrieNode());
+            }
+            node = node.children.get(c);
+        }
+        node.isEnd = true;
+    }
+    
+    public boolean search(String word) {
+        TrieNode node = root;
+        for (char c : word.toCharArray()) {
+            if (!node.children.containsKey(c)) {
+                return false;
+            }
+            node = node.children.get(c);
+        }
+        return node.isEnd;
+    }
+    
+    public boolean startsWith(String prefix) {
+        TrieNode node = root;
+        for (char c : prefix.toCharArray()) {
+            if (!node.children.containsKey(c)) {
+                return false;
+            }
+            node = node.children.get(c);
+        }
+        return true;
+    }
+}`,
+          cpp: `struct TrieNode {
+    unordered_map<char, TrieNode*> children;
+    bool isEnd = false;
+};
+
+class Trie {
+    TrieNode* root;
+    
+public:
+    Trie() {
+        root = new TrieNode();
+    }
+    
+    void insert(string word) {
+        TrieNode* node = root;
+        for (char c : word) {
+            if (node->children.find(c) == node->children.end()) {
+                node->children[c] = new TrieNode();
+            }
+            node = node->children[c];
+        }
+        node->isEnd = true;
+    }
+    
+    bool search(string word) {
+        TrieNode* node = root;
+        for (char c : word) {
+            if (node->children.find(c) == node->children.end()) {
+                return false;
+            }
+            node = node->children[c];
+        }
+        return node->isEnd;
+    }
+    
+    bool startsWith(string prefix) {
+        TrieNode* node = root;
+        for (char c : prefix) {
+            if (node->children.find(c) == node->children.end()) {
+                return false;
+            }
+            node = node->children[c];
+        }
+        return true;
+    }
+};`,
+        },
+        problems: [
+          "Implement Trie",
+          "Word Search II",
+          "Design Add and Search Words Data Structure",
+          "Replace Words",
+        ],
+      },
+      {
+        title: "24. Dijkstra's Algorithm",
+        description: "Shortest path in weighted graphs",
+        useCases: [
+          "Shortest path from source to all nodes",
+          "Network routing protocols",
+          "GPS navigation systems",
+          "Flight routing",
+        ],
+        code: {
+          javascript: `function dijkstra(graph, source, n) {
+    const distances = new Array(n).fill(Infinity);
+    distances[source] = 0;
+    
+    const heap = new MinHeap();
+    heap.push([0, source]); // [distance, node]
+    
+    while (heap.size() > 0) {
+        const [currDist, node] = heap.pop();
+        
+        if (currDist > distances[node]) {
+            continue;
+        }
+        
+        for (const [neighbor, weight] of graph[node] || []) {
+            const dist = currDist + weight;
+            
+            if (dist < distances[neighbor]) {
+                distances[neighbor] = dist;
+                heap.push([dist, neighbor]);
+            }
+        }
+    }
+    
+    return distances;
+}`,
+          python: `import heapq
+
+def dijkstra(graph, source, n):
+    distances = [float('inf')] * n
+    distances[source] = 0
+    
+    heap = [(0, source)]
+    
+    while heap:
+        curr_dist, node = heapq.heappop(heap)
+        
+        if curr_dist > distances[node]:
+            continue
+        
+        for neighbor, weight in graph.get(node, []):
+            dist = curr_dist + weight
+            
+            if dist < distances[neighbor]:
+                distances[neighbor] = dist
+                heapq.heappush(heap, (dist, neighbor))
+    
+    return distances`,
+          java: `public int[] dijkstra(Map<Integer, List<int[]>> graph, int source, int n) {
+    int[] distances = new int[n];
+    Arrays.fill(distances, Integer.MAX_VALUE);
+    distances[source] = 0;
+    
+    PriorityQueue<int[]> heap = new PriorityQueue<>((a, b) -> a[0] - b[0]);
+    heap.add(new int[]{0, source});
+    
+    while (!heap.isEmpty()) {
+        int[] curr = heap.remove();
+        int currDist = curr[0];
+        int node = curr[1];
+        
+        if (currDist > distances[node]) {
+            continue;
+        }
+        
+        for (int[] edge : graph.getOrDefault(node, new ArrayList<>())) {
+            int neighbor = edge[0];
+            int weight = edge[1];
+            int dist = currDist + weight;
+            
+            if (dist < distances[neighbor]) {
+                distances[neighbor] = dist;
+                heap.add(new int[]{dist, neighbor});
+            }
+        }
+    }
+    
+    return distances;
+}`,
+          cpp: `vector<int> dijkstra(unordered_map<int, vector<pair<int, int>>>& graph, int source, int n) {
+    vector<int> distances(n, INT_MAX);
+    distances[source] = 0;
+    
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> heap;
+    heap.push({0, source});
+    
+    while (!heap.empty()) {
+        auto [currDist, node] = heap.top();
+        heap.pop();
+        
+        if (currDist > distances[node]) {
+            continue;
+        }
+        
+        for (auto [neighbor, weight] : graph[node]) {
+            int dist = currDist + weight;
+            
+            if (dist < distances[neighbor]) {
+                distances[neighbor] = dist;
+                heap.push({dist, neighbor});
+            }
+        }
+    }
+    
+    return distances;
+}`,
+        },
+        problems: [
+          "Network Delay Time",
+          "Cheapest Flights Within K Stops",
+          "Path with Maximum Minimum Value",
+          "Swim in Rising Water",
+        ],
+      },
+      {
+        title: "25. Design Data Structures",
+        description:
+          "Implement custom data structures with specific operations",
+        useCases: [
+          "LRU/LFU Cache implementation",
+          "Twitter feed design",
+          "Browser history",
+          "Snapshot arrays",
+        ],
+        problems: [
+          "Design Twitter",
+          "Design Browser History",
+          "Design Circular Deque",
+          "Snapshot Array",
+          "LRU Cache",
+          "LFU Cache",
         ],
       },
     ],

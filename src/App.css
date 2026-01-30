@@ -1444,3 +1444,337 @@ body {
     opacity: 1;
   }
 }
+
+/* Pattern Detail Cards */
+.pattern-detail-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.pattern-detail-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-md);
+}
+
+.pattern-detail-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  gap: 1rem;
+}
+
+.pattern-detail-header:hover {
+  background: var(--bg-hover);
+}
+
+.pattern-header-content {
+  display: flex;
+  gap: 1rem;
+  flex: 1;
+}
+
+.pattern-icon {
+  color: var(--accent-primary);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.pattern-detail-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 0.5rem 0;
+  font-family: var(--font-mono);
+}
+
+.pattern-detail-subtitle {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.pattern-expand-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.pattern-expand-btn:hover {
+  background: var(--bg-tertiary);
+  color: var(--accent-primary);
+}
+
+.pattern-detail-content {
+  padding: 0 1.5rem 1.5rem;
+  animation: slideDown 0.3s ease;
+}
+
+/* Code Block Editor Style */
+.patterns-code-block {
+  margin-bottom: 2rem;
+}
+
+.code-block-header-info {
+  margin-bottom: 1rem;
+}
+
+.code-block-title {
+  font-size: 0.938rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 0.25rem 0;
+}
+
+.code-block-description {
+  font-size: 0.813rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.code-block-editor {
+  background: #1e1e1e;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.code-editor-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  background: #2d2d2d;
+  border-bottom: 1px solid #3e3e3e;
+}
+
+.language-selector {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.lang-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.875rem;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: #9ca3af;
+  font-size: 0.813rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: var(--font-mono);
+}
+
+.lang-btn:hover {
+  color: #e5e7eb;
+}
+
+.lang-btn.active {
+  color: #fff;
+}
+
+.lang-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.code-copy-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.875rem;
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 6px;
+  color: var(--accent-primary);
+  font-size: 0.813rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.code-copy-btn:hover {
+  background: rgba(0, 212, 255, 0.2);
+  border-color: var(--accent-primary);
+}
+
+.code-editor-content {
+  padding: 1.5rem;
+  margin: 0;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #d4d4d4;
+}
+
+.code-editor-content code {
+  font-family: var(--font-mono);
+  white-space: pre;
+}
+
+/* Problems Section */
+.pattern-problems-section {
+  margin-top: 2rem;
+}
+
+.section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.pattern-problems-table {
+  margin-bottom: 1.5rem;
+}
+
+.problems-category {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+  margin: 0 0 0.75rem 0;
+  font-family: var(--font-mono);
+}
+
+.problems-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.problem-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+}
+
+.problem-item:hover {
+  background: var(--bg-hover);
+  border-color: var(--accent-primary);
+  transform: translateX(4px);
+  color: var(--text-primary);
+}
+
+.problem-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  color: var(--bg-primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  flex-shrink: 0;
+}
+
+.problem-name {
+  flex: 1;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.problem-link-icon {
+  color: var(--text-secondary);
+  flex-shrink: 0;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.problem-item:hover .problem-link-icon {
+  opacity: 1;
+}
+
+/* Use Cases */
+.pattern-use-cases {
+  margin-top: 2rem;
+  padding: 1.25rem;
+  background: var(--bg-tertiary);
+  border-left: 4px solid var(--accent-primary);
+  border-radius: 8px;
+}
+
+.use-cases-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.use-cases-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.use-cases-list li::before {
+  content: "→";
+  color: var(--accent-primary);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pattern-detail-header {
+    padding: 1rem;
+  }
+
+  .pattern-detail-content {
+    padding: 0 1rem 1rem;
+  }
+
+  .code-editor-header {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: stretch;
+  }
+
+  .language-selector {
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+  }
+
+  .lang-btn {
+    white-space: nowrap;
+  }
+
+  .code-editor-content {
+    font-size: 0.75rem;
+    padding: 1rem;
+  }
+}
