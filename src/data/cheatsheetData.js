@@ -1,50 +1,32 @@
-import Google from "../assets/Google.png";
-import Amazon from "../assets/Amazon.webp";
-import Meta from "../assets/Meta.jpg";
-import Adobe from "../assets/Adobe.png";
-import Apple from "../assets/apple.webp";
-import DE from "../assets/DE.png";
-import Flipkart from "../assets/Flipkart.webp";
-import IBM from "../assets/IBM.jpg";
-import JP from "../assets/JP.webp";
-import Juspay from "../assets/Juspay.avif";
-import LinkedIn from "../assets/LinkedIn.jpg";
-import Microsoft from "../assets/Microsoft.webp";
-import Netflix from "../assets/Netflix.png";
-import Nvidia from "../assets/Nvidia.webp";
-import Oracle from "../assets/Oracle.webp";
-import PayPal from "../assets/PayPal.png";
-import Paytm from "../assets/Paytm.jpg";
-import Uber from "../assets/Uber.webp";
-
-
 export const cheatsheetData = {
   bigO: {
-  title: "Big O Complexity Analysis",
-  icon: "Activity",
-  description: "Understanding algorithm efficiency through time and space complexity",
-  hero: {
-    title: "Master Big O Complexity",
-    subtitle: "Learn how to analyze and optimize algorithm performance",
-    image: "/mnt/user-data/uploads/Big_O.jpg"
-  },
-  timeComplexities: [
-    {
-      notation: "O(1)",
-      name: "Constant Time",
-      description: "Best possible time complexity. The algorithm takes the same amount of time regardless of input size. Operations complete in fixed time.",
-      color: "#10b981",
-      maxN: "> 10⁹",
-      operations: "1 operation",
-      performance: "Excellent",
-      examples: [
-        "Array access by index: arr[5]",
-        "Hash table lookup: map.get(key)",
-        "Stack push/pop operations",
-        "Getting array length",
-        "Mathematical calculations"
-      ],
-      code: `// O(1) - Constant Time Example
+    title: "Big O Complexity Analysis",
+    icon: "Activity",
+    description:
+      "Understanding algorithm efficiency through time and space complexity",
+    hero: {
+      title: "Master Big O Complexity",
+      subtitle: "Learn how to analyze and optimize algorithm performance",
+      image: "/mnt/user-data/uploads/Big_O.jpg",
+    },
+    timeComplexities: [
+      {
+        notation: "O(1)",
+        name: "Constant Time",
+        description:
+          "Best possible time complexity. The algorithm takes the same amount of time regardless of input size. Operations complete in fixed time.",
+        color: "#10b981",
+        maxN: "> 10⁹",
+        operations: "1 operation",
+        performance: "Excellent",
+        examples: [
+          "Array access by index: arr[5]",
+          "Hash table lookup: map.get(key)",
+          "Stack push/pop operations",
+          "Getting array length",
+          "Mathematical calculations",
+        ],
+        code: `// O(1) - Constant Time Example
 function getFirstElement(arr) {
     return arr[0];  // Single operation, always
 }
@@ -59,24 +41,25 @@ function constantExample(x, y) {
     const b = a * 2;
     const c = b - 10;
     return c;
-}`
-    },
-    {
-      notation: "O(log n)",
-      name: "Logarithmic Time",
-      description: "Excellent complexity. The algorithm divides the problem in half with each step. log(1,000,000) is only about 20 operations!",
-      color: "#3b82f6",
-      maxN: "> 10⁸",
-      operations: "~20 ops for 1M",
-      performance: "Great",
-      examples: [
-        "Binary search on sorted array",
-        "Balanced Binary Search Tree operations",
-        "Finding element in sorted data",
-        "Divide and conquer algorithms",
-        "Processing digits of a number"
-      ],
-      code: `// O(log n) - Binary Search
+}`,
+      },
+      {
+        notation: "O(log n)",
+        name: "Logarithmic Time",
+        description:
+          "Excellent complexity. The algorithm divides the problem in half with each step. log(1,000,000) is only about 20 operations!",
+        color: "#3b82f6",
+        maxN: "> 10⁸",
+        operations: "~20 ops for 1M",
+        performance: "Great",
+        examples: [
+          "Binary search on sorted array",
+          "Balanced Binary Search Tree operations",
+          "Finding element in sorted data",
+          "Divide and conquer algorithms",
+          "Processing digits of a number",
+        ],
+        code: `// O(log n) - Binary Search
 function binarySearch(arr, target) {
     let left = 0;
     let right = arr.length - 1;
@@ -96,24 +79,25 @@ function binarySearch(arr, target) {
     }
     
     return -1;
-}`
-    },
-    {
-      notation: "O(n)",
-      name: "Linear Time",
-      description: "Good complexity. The algorithm processes each element once. Time grows proportionally with input size. Most optimal for problems requiring inspection of all elements.",
-      color: "#8b5cf6",
-      maxN: "≤ 10⁶",
-      operations: "1M ops",
-      performance: "Good",
-      examples: [
-        "Single loop through array",
-        "Finding max/min element",
-        "Two pointers technique",
-        "Linear search",
-        "Counting occurrences"
-      ],
-      code: `// O(n) - Linear Time
+}`,
+      },
+      {
+        notation: "O(n)",
+        name: "Linear Time",
+        description:
+          "Good complexity. The algorithm processes each element once. Time grows proportionally with input size. Most optimal for problems requiring inspection of all elements.",
+        color: "#8b5cf6",
+        maxN: "≤ 10⁶",
+        operations: "1M ops",
+        performance: "Good",
+        examples: [
+          "Single loop through array",
+          "Finding max/min element",
+          "Two pointers technique",
+          "Linear search",
+          "Counting occurrences",
+        ],
+        code: `// O(n) - Linear Time
 function findMax(arr) {
     let max = arr[0];
     
@@ -139,24 +123,25 @@ function linearExample(arr) {
     for (let i = 0; i < arr.length; i++) {
         // operation 3
     }
-}`
-    },
-    {
-      notation: "O(n log n)",
-      name: "Linearithmic Time",
-      description: "Fair complexity and optimal for comparison-based sorting. The best we can do for general sorting problems. Common in divide-and-conquer algorithms.",
-      color: "#f59e0b",
-      maxN: "≤ 10⁶",
-      operations: "1M ops",
-      performance: "Fair",
-      examples: [
-        "Merge Sort",
-        "Quick Sort (average case)",
-        "Heap Sort",
-        "Efficient sorting algorithms",
-        "Divide and conquer with merge"
-      ],
-      code: `// O(n log n) - Merge Sort
+}`,
+      },
+      {
+        notation: "O(n log n)",
+        name: "Linearithmic Time",
+        description:
+          "Fair complexity and optimal for comparison-based sorting. The best we can do for general sorting problems. Common in divide-and-conquer algorithms.",
+        color: "#f59e0b",
+        maxN: "≤ 10⁶",
+        operations: "1M ops",
+        performance: "Fair",
+        examples: [
+          "Merge Sort",
+          "Quick Sort (average case)",
+          "Heap Sort",
+          "Efficient sorting algorithms",
+          "Divide and conquer with merge",
+        ],
+        code: `// O(n log n) - Merge Sort
 function mergeSort(arr) {
     if (arr.length <= 1) return arr;
     
@@ -180,24 +165,25 @@ function merge(left, right) {
     }
     
     return result.concat(left.slice(i), right.slice(j));
-}`
-    },
-    {
-      notation: "O(n²)",
-      name: "Quadratic Time",
-      description: "Moderate complexity. Acceptable only for small inputs (n ≤ 3000). Common in brute force solutions with nested loops. Always try to optimize if possible.",
-      color: "#ef4444",
-      maxN: "≤ 3,000",
-      operations: "9M ops",
-      performance: "Moderate",
-      examples: [
-        "Nested loops (checking all pairs)",
-        "Bubble Sort",
-        "Selection Sort",
-        "Insertion Sort",
-        "Comparing every element with every other"
-      ],
-      code: `// O(n²) - Quadratic Time
+}`,
+      },
+      {
+        notation: "O(n²)",
+        name: "Quadratic Time",
+        description:
+          "Moderate complexity. Acceptable only for small inputs (n ≤ 3000). Common in brute force solutions with nested loops. Always try to optimize if possible.",
+        color: "#ef4444",
+        maxN: "≤ 3,000",
+        operations: "9M ops",
+        performance: "Moderate",
+        examples: [
+          "Nested loops (checking all pairs)",
+          "Bubble Sort",
+          "Selection Sort",
+          "Insertion Sort",
+          "Comparing every element with every other",
+        ],
+        code: `// O(n²) - Quadratic Time
 function bubbleSort(arr) {
     const n = arr.length;
     
@@ -224,24 +210,25 @@ function findAllPairs(arr) {
     }
     
     return pairs;
-}`
-    },
-    {
-      notation: "O(2ⁿ)",
-      name: "Exponential Time",
-      description: "Poor complexity. Only feasible for very small inputs (n ≤ 20). Grows extremely rapidly. Often requires memoization to optimize. Common in recursive solutions without caching.",
-      color: "#dc2626",
-      maxN: "≤ 20",
-      operations: "1M ops at n=20",
-      performance: "Poor",
-      examples: [
-        "Recursive Fibonacci (naive)",
-        "Generating all subsets",
-        "Solving Tower of Hanoi",
-        "Backtracking without pruning",
-        "Recursive tree traversal (all paths)"
-      ],
-      code: `// O(2ⁿ) - Exponential Time
+}`,
+      },
+      {
+        notation: "O(2ⁿ)",
+        name: "Exponential Time",
+        description:
+          "Poor complexity. Only feasible for very small inputs (n ≤ 20). Grows extremely rapidly. Often requires memoization to optimize. Common in recursive solutions without caching.",
+        color: "#dc2626",
+        maxN: "≤ 20",
+        operations: "1M ops at n=20",
+        performance: "Poor",
+        examples: [
+          "Recursive Fibonacci (naive)",
+          "Generating all subsets",
+          "Solving Tower of Hanoi",
+          "Backtracking without pruning",
+          "Recursive tree traversal (all paths)",
+        ],
+        code: `// O(2ⁿ) - Exponential Time
 // WARNING: Very slow for n > 30!
 function fibonacci(n) {
     if (n <= 1) return n;
@@ -266,24 +253,25 @@ function generateSubsets(arr) {
     
     backtrack(0, []);
     return result;
-}`
-    },
-    {
-      notation: "O(n!)",
-      name: "Factorial Time",
-      description: "Very poor complexity. Only works for tiny inputs (n ≤ 12). Grows astronomically fast. Common in generating all permutations. Almost always needs optimization.",
-      color: "#991b1b",
-      maxN: "≤ 12",
-      operations: "479M ops at n=12",
-      performance: "Very Poor",
-      examples: [
-        "Generating all permutations",
-        "Traveling Salesman (brute force)",
-        "Solving N-Queens (naive)",
-        "All possible arrangements",
-        "Exhaustive search problems"
-      ],
-      code: `// O(n!) - Factorial Time
+}`,
+      },
+      {
+        notation: "O(n!)",
+        name: "Factorial Time",
+        description:
+          "Very poor complexity. Only works for tiny inputs (n ≤ 12). Grows astronomically fast. Common in generating all permutations. Almost always needs optimization.",
+        color: "#991b1b",
+        maxN: "≤ 12",
+        operations: "479M ops at n=12",
+        performance: "Very Poor",
+        examples: [
+          "Generating all permutations",
+          "Traveling Salesman (brute force)",
+          "Solving N-Queens (naive)",
+          "All possible arrangements",
+          "Exhaustive search problems",
+        ],
+        code: `// O(n!) - Factorial Time
 // WARNING: Only works for n ≤ 10!
 function generatePermutations(arr) {
     if (arr.length <= 1) return [arr];
@@ -303,110 +291,119 @@ function generatePermutations(arr) {
     return result;
 }
 
-// n! grows: 5! = 120, 10! = 3.6M, 12! = 479M`
-    }
-  ],
-  spaceComplexities: [
-    {
-      notation: "O(1)",
-      name: "Constant Space",
-      description: "Uses fixed amount of memory regardless of input size",
-      color: "#10b981",
-      examples: [
-        "Few variables",
-        "In-place algorithms",
-        "Two pointers technique",
-        "Swapping elements"
-      ]
+// n! grows: 5! = 120, 10! = 3.6M, 12! = 479M`,
+      },
+    ],
+    spaceComplexities: [
+      {
+        notation: "O(1)",
+        name: "Constant Space",
+        description: "Uses fixed amount of memory regardless of input size",
+        color: "#10b981",
+        examples: [
+          "Few variables",
+          "In-place algorithms",
+          "Two pointers technique",
+          "Swapping elements",
+        ],
+      },
+      {
+        notation: "O(n)",
+        name: "Linear Space",
+        description: "Memory usage grows proportionally with input size",
+        color: "#8b5cf6",
+        examples: [
+          "Creating new array of size n",
+          "Hash map with n entries",
+          "Recursion call stack",
+          "Storing all elements",
+        ],
+      },
+      {
+        notation: "O(n²)",
+        name: "Quadratic Space",
+        description: "Memory usage grows quadratically with input",
+        color: "#ef4444",
+        examples: [
+          "2D matrix of size n×n",
+          "Graph adjacency matrix",
+          "Dynamic programming table",
+          "Storing all pairs",
+        ],
+      },
+    ],
+    visualizations: {
+      complexityChart: {
+        image: "/mnt/user-data/uploads/Big_O.jpg",
+        caption:
+          "Visual representation of how different time complexities scale with input size",
+      },
+      dataStructures: {
+        image: "/mnt/user-data/uploads/Data.png",
+        caption: "Time and space complexity of common data structures",
+      },
+      dataOperations: {
+        image: "/mnt/user-data/uploads/DataOperation.jpg",
+        caption: "Complexity of operations on various data structures",
+      },
+      algorithms: {
+        image: "/mnt/user-data/uploads/Algorithms.png",
+        caption: "Time and space complexity of sorting algorithms",
+      },
     },
-    {
-      notation: "O(n)",
-      name: "Linear Space",
-      description: "Memory usage grows proportionally with input size",
-      color: "#8b5cf6",
-      examples: [
-        "Creating new array of size n",
-        "Hash map with n entries",
-        "Recursion call stack",
-        "Storing all elements"
-      ]
-    },
-    {
-      notation: "O(n²)",
-      name: "Quadratic Space",
-      description: "Memory usage grows quadratically with input",
-      color: "#ef4444",
-      examples: [
-        "2D matrix of size n×n",
-        "Graph adjacency matrix",
-        "Dynamic programming table",
-        "Storing all pairs"
-      ]
-    }
-  ],
-  visualizations: {
-    complexityChart: {
-      image: "/mnt/user-data/uploads/Big_O.jpg",
-      caption: "Visual representation of how different time complexities scale with input size"
-    },
-    dataStructures: {
-      image: "/mnt/user-data/uploads/Data.png",
-      caption: "Time and space complexity of common data structures"
-    },
-    dataOperations: {
-      image: "/mnt/user-data/uploads/DataOperation.jpg",
-      caption: "Complexity of operations on various data structures"
-    },
-    algorithms: {
-      image: "/mnt/user-data/uploads/Algorithms.png",
-      caption: "Time and space complexity of sorting algorithms"
-    }
+    keyInsights: [
+      {
+        title: "Drop Constants & Lower Terms",
+        description:
+          "O(2n) = O(n), O(n² + n) = O(n²). Focus on the dominant term.",
+        icon: "info",
+      },
+      {
+        title: "Logarithmic is Extremely Fast",
+        description:
+          "log(1,000,000) ≈ 20. Binary search on a million items takes only ~20 steps!",
+        icon: "trending-up",
+      },
+      {
+        title: "Know Your Limits",
+        description:
+          "O(n²) works for n ≤ 3K, O(n) for n ≤ 1M, O(2ⁿ) for n ≤ 20. Plan accordingly.",
+        icon: "alert-circle",
+      },
+      {
+        title: "Space-Time Tradeoff",
+        description:
+          "Often you can trade memory for speed. Hash tables use O(n) space for O(1) lookups.",
+        icon: "zap",
+      },
+    ],
+    interviewTips: [
+      {
+        number: 1,
+        title: "Always Analyze Both Time and Space",
+        description:
+          "Interviewers want to see you consider memory usage, not just runtime. Mention both complexities.",
+      },
+      {
+        number: 2,
+        title: "Explain Your Reasoning",
+        description:
+          "Walk through why your solution has a certain complexity. Count loops, recursive calls, etc.",
+      },
+      {
+        number: 3,
+        title: "Consider Amortized Complexity",
+        description:
+          "Some operations are expensive occasionally but average out. Dynamic array resize is O(1) amortized.",
+      },
+      {
+        number: 4,
+        title: "Optimize When Necessary",
+        description:
+          "Start with working solution, then optimize. Explain trade-offs between different approaches.",
+      },
+    ],
   },
-  keyInsights: [
-    {
-      title: "Drop Constants & Lower Terms",
-      description: "O(2n) = O(n), O(n² + n) = O(n²). Focus on the dominant term.",
-      icon: "info"
-    },
-    {
-      title: "Logarithmic is Extremely Fast",
-      description: "log(1,000,000) ≈ 20. Binary search on a million items takes only ~20 steps!",
-      icon: "trending-up"
-    },
-    {
-      title: "Know Your Limits",
-      description: "O(n²) works for n ≤ 3K, O(n) for n ≤ 1M, O(2ⁿ) for n ≤ 20. Plan accordingly.",
-      icon: "alert-circle"
-    },
-    {
-      title: "Space-Time Tradeoff",
-      description: "Often you can trade memory for speed. Hash tables use O(n) space for O(1) lookups.",
-      icon: "zap"
-    }
-  ],
-  interviewTips: [
-    {
-      number: 1,
-      title: "Always Analyze Both Time and Space",
-      description: "Interviewers want to see you consider memory usage, not just runtime. Mention both complexities."
-    },
-    {
-      number: 2,
-      title: "Explain Your Reasoning",
-      description: "Walk through why your solution has a certain complexity. Count loops, recursive calls, etc."
-    },
-    {
-      number: 3,
-      title: "Consider Amortized Complexity",
-      description: "Some operations are expensive occasionally but average out. Dynamic array resize is O(1) amortized."
-    },
-    {
-      number: 4,
-      title: "Optimize When Necessary",
-      description: "Start with working solution, then optimize. Explain trade-offs between different approaches."
-    }
-  ]
-},
 
   dataStructures: {
     title: "Data Structures",
@@ -5962,7 +5959,7 @@ def dijkstra(graph, start):
     companies: [
       {
         name: "Google",
-        logo: Google,
+        logo: "/Google.png",
         color: "#4285f4",
         totalQuestions: 500,
         frequency: "Very High",
@@ -6577,7 +6574,7 @@ def dijkstra(graph, start):
       },
       {
         name: "Amazon",
-        logo: Amazon,
+        logo: "/Amazon.webp",
         color: "#ff9900",
         totalQuestions: 600,
         frequency: "Extremely High",
@@ -6940,7 +6937,7 @@ def dijkstra(graph, start):
       },
       {
         name: "Meta",
-        logo: Meta,
+        logo: "/Meta.jpg",
         color: "#0668E1",
         totalQuestions: 550,
         frequency: "Extremely High",
@@ -7226,7 +7223,7 @@ def dijkstra(graph, start):
       },
       {
         name: "Microsoft",
-        logo: Microsoft,
+        logo: "Microsoft.webp",
         color: "#00a4ef",
         totalQuestions: 101,
         frequency: "High",
@@ -7559,7 +7556,7 @@ def dijkstra(graph, start):
       },
       {
         name: "Apple",
-        logo: Apple,
+        logo: "apple.webp",
         color: "#555555",
         totalQuestions: 101,
         frequency: "High",
@@ -7886,7 +7883,7 @@ def dijkstra(graph, start):
       },
       {
         name: "Netflix",
-        logo: Netflix,
+        logo: "/Netflix.png",
         color: "#E50914",
         totalQuestions: 38,
         frequency: "High",
@@ -8114,7 +8111,7 @@ def dijkstra(graph, start):
       },
       {
         name: "Adobe",
-        logo: Adobe,
+        logo: "/Adobe.png",
         color: "#FF0000",
         totalQuestions: 101,
         frequency: "Very High",
@@ -8423,7 +8420,7 @@ def dijkstra(graph, start):
       },
       {
         name: "LinkedIn",
-        logo: LinkedIn,
+        logo: "/LinkedIn.jpg",
         color: "#0077B5",
         totalQuestions: 101,
         frequency: "High",
@@ -8697,7 +8694,7 @@ def dijkstra(graph, start):
       },
       {
         name: "J.P. Morgan",
-        logo: JP,
+        logo: "/JP.webp",
         color: "#2C2E2F",
         totalQuestions: 101,
         frequency: "High",
@@ -8965,7 +8962,7 @@ def dijkstra(graph, start):
       },
       {
         name: "Nvidia",
-        logo: Nvidia,
+        logo: "/Nvidia.webp",
         color: "#76B900",
         totalQuestions: 101,
         frequency: "High",
@@ -9229,7 +9226,7 @@ def dijkstra(graph, start):
       },
       {
         name: "Uber",
-        logo: Uber,
+        logo: "/Uber.webp",
         color: "#000000",
         totalQuestions: 101,
         frequency: "Very High",
@@ -9470,7 +9467,7 @@ def dijkstra(graph, start):
       },
       {
         name: "Flipkart",
-        logo: Flipkart,
+        logo: "/Flipkart.webp",
         color: "#2874F0",
         totalQuestions: 101,
         frequency: "Very High",
@@ -9670,7 +9667,7 @@ def dijkstra(graph, start):
       },
       {
         name: "PayPal",
-        logo: PayPal,
+        logo: "/PayPal.png",
         color: "#003087",
         totalQuestions: 101,
         frequency: "Very High",
@@ -9965,7 +9962,7 @@ def dijkstra(graph, start):
       },
       {
         name: "Paytm",
-        logo: Paytm,
+        logo: "/Paytm.jpg",
         color: "#002E6E",
         totalQuestions: 101,
         frequency: "High",
@@ -10214,7 +10211,7 @@ def dijkstra(graph, start):
       },
       {
         name: "Juspay",
-        logo: Juspay,
+        logo: "/Juspay.avif",
         color: "#94C11F",
         totalQuestions: 101,
         frequency: "Extremely High",
@@ -10332,7 +10329,7 @@ def dijkstra(graph, start):
       },
       {
         name: "IBM",
-        logo: IBM,
+        logo: "/IBM.jpg",
         color: "#006699",
         totalQuestions: 101,
         frequency: "Very High",
@@ -10550,7 +10547,7 @@ def dijkstra(graph, start):
       },
       {
         name: "Oracle",
-        logo: Oracle,
+        logo: "/Oracle.webp",
         color: "#F80000",
         totalQuestions: 101,
         frequency: "High",
@@ -10813,7 +10810,7 @@ def dijkstra(graph, start):
       },
       {
         name: "D.E. Shaw",
-        logo: DE,
+        logo: "/DE.png",
         color: "#9E1B32",
         totalQuestions: 101,
         frequency: "Extremely High",

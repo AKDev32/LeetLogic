@@ -46,7 +46,7 @@ function App() {
             </button>
             <h1 className="logo">
               <span className="logo-bracket">&lt;</span>
-              LeetCode
+              LeetLogic
               <span className="logo-bracket">/&gt;</span>
             </h1>
           </div>
