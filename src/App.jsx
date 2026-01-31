@@ -1,25 +1,36 @@
-import { useState } from 'react';
-import { Activity, Database, Code2, Lightbulb, Brain, Building2, Menu, X, Github, ExternalLink } from 'lucide-react';
-import { cheatsheetData } from './data/cheatsheetData';
-import ComplexityCard from './components/ComplexityCard';
-import DataStructureCard from './components/DataStructureCard';
-import AlgorithmCard from './components/AlgorithmCard';
-import PatternCard from './components/PatternCard';
-import TipsCard from './components/TipsCard';
-import CompanyQuestionsCard from './components/CompanyQuestionsCard';
-import './App.css';
+import { useState } from "react";
+import {
+  Activity,
+  Database,
+  Code2,
+  Lightbulb,
+  Brain,
+  Building2,
+  Menu,
+  X,
+  Github,
+  ExternalLink,
+} from "lucide-react";
+import { cheatsheetData } from "./data/cheatsheetData";
+import ComplexityCard from "./components/ComplexityCard";
+import DataStructureCard from "./components/DataStructureCard";
+import AlgorithmCard from "./components/AlgorithmCard";
+import PatternCard from "./components/PatternCard";
+import TipsCard from "./components/TipsCard";
+import CompanyQuestionsCard from "./components/CompanyQuestionsCard";
+import "./App.css";
 
 function App() {
-  const [activeTab, setActiveTab] = useState('bigO');
+  const [activeTab, setActiveTab] = useState("bigO");
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
   const tabs = [
-    { id: 'bigO', label: 'Big O', icon: Activity },
-    { id: 'dataStructures', label: 'Data Structures', icon: Database },
-    { id: 'algorithms', label: 'Algorithms', icon: Code2 },
-    { id: 'patterns', label: 'Patterns', icon: Lightbulb },
-    { id: 'companyQuestions', label: 'Companies', icon: Building2 },
-    { id: 'tips', label: 'Tips', icon: Brain }
+    { id: "bigO", label: "Big O", icon: Activity },
+    { id: "dataStructures", label: "Data Structures", icon: Database },
+    { id: "algorithms", label: "Algorithms", icon: Code2 },
+    { id: "patterns", label: "Patterns", icon: Lightbulb },
+    { id: "companyQuestions", label: "Companies", icon: Building2 },
+    { id: "tips", label: "Tips", icon: Brain },
   ];
 
   return (
@@ -27,7 +38,7 @@ function App() {
       <header className="header">
         <div className="header-content">
           <div className="header-left">
-            <button 
+            <button
               className="menu-toggle"
               onClick={() => setSidebarOpen(!sidebarOpen)}
             >
@@ -40,18 +51,18 @@ function App() {
             </h1>
           </div>
           <div className="header-right">
-            <a 
-              href="https://github.com" 
-              target="_blank" 
+            <a
+              href="https://github.com"
+              target="_blank"
               rel="noopener noreferrer"
               className="header-link"
             >
               <Github size={20} />
               <span>GitHub</span>
             </a>
-            <a 
-              href="https://leetcode.com" 
-              target="_blank" 
+            <a
+              href="https://leetcode.com"
+              target="_blank"
               rel="noopener noreferrer"
               className="header-link"
             >
@@ -63,14 +74,14 @@ function App() {
       </header>
 
       <div className="main-container">
-        <aside className={`sidebar ${sidebarOpen ? 'open' : 'closed'}`}>
+        <aside className={`sidebar ${sidebarOpen ? "open" : "closed"}`}>
           <nav className="sidebar-nav">
-            {tabs.map(tab => {
+            {tabs.map((tab) => {
               const Icon = tab.icon;
               return (
                 <button
                   key={tab.id}
-                  className={`sidebar-item ${activeTab === tab.id ? 'active' : ''}`}
+                  className={`sidebar-item ${activeTab === tab.id ? "active" : ""}`}
                   onClick={() => setActiveTab(tab.id)}
                 >
                   <Icon size={20} />
@@ -83,30 +94,104 @@ function App() {
 
         <main className="content">
           <div className="content-inner">
-            {activeTab === 'bigO' && (
-              <section className="section">
+            {/* // In the Big O section rendering: */}
+            {activeTab === "bigO" && (
+              <section id="bigO" className="section">
                 <div className="section-header">
-                  <Activity className="section-icon" size={32} />
+                  <Activity size={32} className="section-icon" />
                   <div>
-                    <h2 className="section-title">{cheatsheetData.bigO.title}</h2>
-                    <p className="section-subtitle">Time and space complexity analysis</p>
+                    <h2 className="section-title">
+                      {cheatsheetData.bigO.title}
+                    </h2>
+                    <p className="section-description">
+                      {cheatsheetData.bigO.description}
+                    </p>
                   </div>
                 </div>
-                <div className="grid">
-                  {cheatsheetData.bigO.sections.map((section, idx) => (
-                    <ComplexityCard key={idx} section={section} />
-                  ))}
+
+                {/* Complexity Chart */}
+                {cheatsheetData.bigO.visualizations && (
+                  <div className="visualization-container">
+                    <img
+                      src="BigO.jpg"
+                      alt="Big O Complexity Chart"
+                      className="visualization-image"
+                    />
+                    <p className="visualization-caption">
+                      {
+                        cheatsheetData.bigO.visualizations.complexityChart
+                          .caption
+                      }
+                    </p>
+                  </div>
+                )}
+
+                {/* Time Complexities */}
+                <h3 className="subsection-title">Time Complexity</h3>
+                <div className="complexity-cards-grid">
+                  {cheatsheetData.bigO.timeComplexities.map(
+                    (complexity, idx) => (
+                      <ComplexityCard key={idx} complexity={complexity} />
+                    ),
+                  )}
                 </div>
+
+                {/* Space Complexities */}
+                <h3 className="subsection-title">Space Complexity</h3>
+                <div className="complexity-cards-grid">
+                  {cheatsheetData.bigO.spaceComplexities.map(
+                    (complexity, idx) => (
+                      <ComplexityCard key={idx} complexity={complexity} />
+                    ),
+                  )}
+                </div>
+
+                {/* Other Visualizations */}
+                {cheatsheetData.bigO.visualizations && (
+                  <>
+                    <div className="visualization-container">
+                      <h3 className="subsection-title">
+                        Data Structure Complexities
+                      </h3>
+                      <img
+                        src="/Data.png"
+                        alt="Data Structures"
+                        className="visualization-image"
+                      />
+                    </div>
+
+                    {/* <div className="visualization-container">
+          <img 
+            src="/DataOperation.jpg" 
+            alt="Data Operations"
+            className="visualization-image"
+          />
+        </div> */}
+
+                    <div className="visualization-container">
+                      <h3 className="subsection-title">Sorting Algorithms</h3>
+                      <img
+                        src="/algr.png"
+                        alt="Algorithms"
+                        className="visualization-image"
+                      />
+                    </div>
+                  </>
+                )}
               </section>
             )}
 
-            {activeTab === 'dataStructures' && (
+            {activeTab === "dataStructures" && (
               <section className="section">
                 <div className="section-header">
                   <Database className="section-icon" size={32} />
                   <div>
-                    <h2 className="section-title">{cheatsheetData.dataStructures.title}</h2>
-                    <p className="section-subtitle">Common data structures and their implementations</p>
+                    <h2 className="section-title">
+                      {cheatsheetData.dataStructures.title}
+                    </h2>
+                    <p className="section-subtitle">
+                      Common data structures and their implementations
+                    </p>
                   </div>
                 </div>
                 <div className="data-structures-grid">
@@ -117,13 +202,17 @@ function App() {
               </section>
             )}
 
-            {activeTab === 'algorithms' && (
+            {activeTab === "algorithms" && (
               <section className="section">
                 <div className="section-header">
                   <Code2 className="section-icon" size={32} />
                   <div>
-                    <h2 className="section-title">{cheatsheetData.algorithms.title}</h2>
-                    <p className="section-subtitle">Essential algorithms with code examples</p>
+                    <h2 className="section-title">
+                      {cheatsheetData.algorithms.title}
+                    </h2>
+                    <p className="section-subtitle">
+                      Essential algorithms with code examples
+                    </p>
                   </div>
                 </div>
                 <div className="algorithms-container">
@@ -134,13 +223,17 @@ function App() {
               </section>
             )}
 
-            {activeTab === 'patterns' && (
+            {activeTab === "patterns" && (
               <section className="section">
                 <div className="section-header">
                   <Lightbulb className="section-icon" size={32} />
                   <div>
-                    <h2 className="section-title">{cheatsheetData.patterns.title}</h2>
-                    <p className="section-subtitle">Problem-solving patterns and techniques</p>
+                    <h2 className="section-title">
+                      {cheatsheetData.patterns.title}
+                    </h2>
+                    <p className="section-subtitle">
+                      Problem-solving patterns and techniques
+                    </p>
                   </div>
                 </div>
                 <div className="patterns-grid">
@@ -151,30 +244,40 @@ function App() {
               </section>
             )}
 
-            {activeTab === 'companyQuestions' && (
+            {activeTab === "companyQuestions" && (
               <section className="section">
                 <div className="section-header">
                   <Building2 className="section-icon" size={32} />
                   <div>
-                    <h2 className="section-title">{cheatsheetData.companyQuestions.title}</h2>
-                    <p className="section-subtitle">Frequently asked questions by top tech companies</p>
+                    <h2 className="section-title">
+                      {cheatsheetData.companyQuestions.title}
+                    </h2>
+                    <p className="section-subtitle">
+                      Frequently asked questions by top tech companies
+                    </p>
                   </div>
                 </div>
                 <div className="company-questions-grid">
-                  {cheatsheetData.companyQuestions.companies.map((company, idx) => (
-                    <CompanyQuestionsCard key={idx} company={company} />
-                  ))}
+                  {cheatsheetData.companyQuestions.companies.map(
+                    (company, idx) => (
+                      <CompanyQuestionsCard key={idx} company={company} />
+                    ),
+                  )}
                 </div>
               </section>
             )}
 
-            {activeTab === 'tips' && (
+            {activeTab === "tips" && (
               <section className="section">
                 <div className="section-header">
                   <Brain className="section-icon" size={32} />
                   <div>
-                    <h2 className="section-title">{cheatsheetData.tips.title}</h2>
-                    <p className="section-subtitle">Strategies for tackling coding interviews</p>
+                    <h2 className="section-title">
+                      {cheatsheetData.tips.title}
+                    </h2>
+                    <p className="section-subtitle">
+                      Strategies for tackling coding interviews
+                    </p>
                   </div>
                 </div>
                 <div className="tips-grid">

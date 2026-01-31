@@ -17,80 +17,396 @@ import PayPal from "../assets/PayPal.png";
 import Paytm from "../assets/Paytm.jpg";
 import Uber from "../assets/Uber.webp";
 
+
 export const cheatsheetData = {
   bigO: {
-    title: "Big O Complexity",
-    icon: "Activity",
-    sections: [
-      {
-        title: "Time Complexity",
-        items: [
-          {
-            name: "O(1)",
-            description: "Constant",
-            examples: ["Array access", "Hash table lookup"],
-            color: "#10b981",
-          },
-          {
-            name: "O(log n)",
-            description: "Logarithmic",
-            examples: ["Binary search", "Balanced BST operations"],
-            color: "#3b82f6",
-          },
-          {
-            name: "O(n)",
-            description: "Linear",
-            examples: ["Array traversal", "Single loop"],
-            color: "#8b5cf6",
-          },
-          {
-            name: "O(n log n)",
-            description: "Linearithmic",
-            examples: ["Merge sort", "Quick sort", "Heap sort"],
-            color: "#f59e0b",
-          },
-          {
-            name: "O(n²)",
-            description: "Quadratic",
-            examples: ["Bubble sort", "Nested loops"],
-            color: "#ef4444",
-          },
-          {
-            name: "O(2ⁿ)",
-            description: "Exponential",
-            examples: ["Recursive fibonacci", "Subset generation"],
-            color: "#dc2626",
-          },
-          {
-            name: "O(n!)",
-            description: "Factorial",
-            examples: ["Permutations", "Traveling salesman"],
-            color: "#991b1b",
-          },
-        ],
-      },
-      {
-        title: "Space Complexity",
-        items: [
-          {
-            name: "O(1)",
-            description: "Constant space",
-            examples: ["Variables only"],
-          },
-          {
-            name: "O(n)",
-            description: "Linear space",
-            examples: ["Array of size n", "Hash map"],
-          },
-          {
-            name: "O(n²)",
-            description: "Quadratic space",
-            examples: ["2D matrix"],
-          },
-        ],
-      },
-    ],
+  title: "Big O Complexity Analysis",
+  icon: "Activity",
+  description: "Understanding algorithm efficiency through time and space complexity",
+  hero: {
+    title: "Master Big O Complexity",
+    subtitle: "Learn how to analyze and optimize algorithm performance",
+    image: "/mnt/user-data/uploads/Big_O.jpg"
   },
+  timeComplexities: [
+    {
+      notation: "O(1)",
+      name: "Constant Time",
+      description: "Best possible time complexity. The algorithm takes the same amount of time regardless of input size. Operations complete in fixed time.",
+      color: "#10b981",
+      maxN: "> 10⁹",
+      operations: "1 operation",
+      performance: "Excellent",
+      examples: [
+        "Array access by index: arr[5]",
+        "Hash table lookup: map.get(key)",
+        "Stack push/pop operations",
+        "Getting array length",
+        "Mathematical calculations"
+      ],
+      code: `// O(1) - Constant Time Example
+function getFirstElement(arr) {
+    return arr[0];  // Single operation, always
+}
+
+function hashLookup(map, key) {
+    return map.get(key);  // Direct access
+}
+
+// Even with multiple operations, still O(1)
+function constantExample(x, y) {
+    const a = x + y;
+    const b = a * 2;
+    const c = b - 10;
+    return c;
+}`
+    },
+    {
+      notation: "O(log n)",
+      name: "Logarithmic Time",
+      description: "Excellent complexity. The algorithm divides the problem in half with each step. log(1,000,000) is only about 20 operations!",
+      color: "#3b82f6",
+      maxN: "> 10⁸",
+      operations: "~20 ops for 1M",
+      performance: "Great",
+      examples: [
+        "Binary search on sorted array",
+        "Balanced Binary Search Tree operations",
+        "Finding element in sorted data",
+        "Divide and conquer algorithms",
+        "Processing digits of a number"
+      ],
+      code: `// O(log n) - Binary Search
+function binarySearch(arr, target) {
+    let left = 0;
+    let right = arr.length - 1;
+    
+    while (left <= right) {
+        const mid = Math.floor((left + right) / 2);
+        
+        if (arr[mid] === target) {
+            return mid;
+        }
+        
+        if (arr[mid] < target) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+    
+    return -1;
+}`
+    },
+    {
+      notation: "O(n)",
+      name: "Linear Time",
+      description: "Good complexity. The algorithm processes each element once. Time grows proportionally with input size. Most optimal for problems requiring inspection of all elements.",
+      color: "#8b5cf6",
+      maxN: "≤ 10⁶",
+      operations: "1M ops",
+      performance: "Good",
+      examples: [
+        "Single loop through array",
+        "Finding max/min element",
+        "Two pointers technique",
+        "Linear search",
+        "Counting occurrences"
+      ],
+      code: `// O(n) - Linear Time
+function findMax(arr) {
+    let max = arr[0];
+    
+    // Process each element once
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+    }
+    
+    return max;
+}
+
+// Still O(n) even with constants
+function linearExample(arr) {
+    // 3 * n operations, but still O(n)
+    for (let i = 0; i < arr.length; i++) {
+        // operation 1
+    }
+    for (let i = 0; i < arr.length; i++) {
+        // operation 2
+    }
+    for (let i = 0; i < arr.length; i++) {
+        // operation 3
+    }
+}`
+    },
+    {
+      notation: "O(n log n)",
+      name: "Linearithmic Time",
+      description: "Fair complexity and optimal for comparison-based sorting. The best we can do for general sorting problems. Common in divide-and-conquer algorithms.",
+      color: "#f59e0b",
+      maxN: "≤ 10⁶",
+      operations: "1M ops",
+      performance: "Fair",
+      examples: [
+        "Merge Sort",
+        "Quick Sort (average case)",
+        "Heap Sort",
+        "Efficient sorting algorithms",
+        "Divide and conquer with merge"
+      ],
+      code: `// O(n log n) - Merge Sort
+function mergeSort(arr) {
+    if (arr.length <= 1) return arr;
+    
+    const mid = Math.floor(arr.length / 2);
+    const left = mergeSort(arr.slice(0, mid));
+    const right = mergeSort(arr.slice(mid));
+    
+    return merge(left, right);
+}
+
+function merge(left, right) {
+    const result = [];
+    let i = 0, j = 0;
+    
+    while (i < left.length && j < right.length) {
+        if (left[i] <= right[j]) {
+            result.push(left[i++]);
+        } else {
+            result.push(right[j++]);
+        }
+    }
+    
+    return result.concat(left.slice(i), right.slice(j));
+}`
+    },
+    {
+      notation: "O(n²)",
+      name: "Quadratic Time",
+      description: "Moderate complexity. Acceptable only for small inputs (n ≤ 3000). Common in brute force solutions with nested loops. Always try to optimize if possible.",
+      color: "#ef4444",
+      maxN: "≤ 3,000",
+      operations: "9M ops",
+      performance: "Moderate",
+      examples: [
+        "Nested loops (checking all pairs)",
+        "Bubble Sort",
+        "Selection Sort",
+        "Insertion Sort",
+        "Comparing every element with every other"
+      ],
+      code: `// O(n²) - Quadratic Time
+function bubbleSort(arr) {
+    const n = arr.length;
+    
+    // Nested loops = n * n = n²
+    for (let i = 0; i < n; i++) {
+        for (let j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+            }
+        }
+    }
+    
+    return arr;
+}
+
+// Finding all pairs
+function findAllPairs(arr) {
+    const pairs = [];
+    
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = i + 1; j < arr.length; j++) {
+            pairs.push([arr[i], arr[j]]);
+        }
+    }
+    
+    return pairs;
+}`
+    },
+    {
+      notation: "O(2ⁿ)",
+      name: "Exponential Time",
+      description: "Poor complexity. Only feasible for very small inputs (n ≤ 20). Grows extremely rapidly. Often requires memoization to optimize. Common in recursive solutions without caching.",
+      color: "#dc2626",
+      maxN: "≤ 20",
+      operations: "1M ops at n=20",
+      performance: "Poor",
+      examples: [
+        "Recursive Fibonacci (naive)",
+        "Generating all subsets",
+        "Solving Tower of Hanoi",
+        "Backtracking without pruning",
+        "Recursive tree traversal (all paths)"
+      ],
+      code: `// O(2ⁿ) - Exponential Time
+// WARNING: Very slow for n > 30!
+function fibonacci(n) {
+    if (n <= 1) return n;
+    
+    // Each call creates 2 more calls!
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+// Generating all subsets
+function generateSubsets(arr) {
+    const result = [];
+    
+    function backtrack(start, current) {
+        result.push([...current]);
+        
+        for (let i = start; i < arr.length; i++) {
+            current.push(arr[i]);
+            backtrack(i + 1, current);
+            current.pop();
+        }
+    }
+    
+    backtrack(0, []);
+    return result;
+}`
+    },
+    {
+      notation: "O(n!)",
+      name: "Factorial Time",
+      description: "Very poor complexity. Only works for tiny inputs (n ≤ 12). Grows astronomically fast. Common in generating all permutations. Almost always needs optimization.",
+      color: "#991b1b",
+      maxN: "≤ 12",
+      operations: "479M ops at n=12",
+      performance: "Very Poor",
+      examples: [
+        "Generating all permutations",
+        "Traveling Salesman (brute force)",
+        "Solving N-Queens (naive)",
+        "All possible arrangements",
+        "Exhaustive search problems"
+      ],
+      code: `// O(n!) - Factorial Time
+// WARNING: Only works for n ≤ 10!
+function generatePermutations(arr) {
+    if (arr.length <= 1) return [arr];
+    
+    const result = [];
+    
+    for (let i = 0; i < arr.length; i++) {
+        const current = arr[i];
+        const remaining = [...arr.slice(0, i), ...arr.slice(i + 1)];
+        const perms = generatePermutations(remaining);
+        
+        for (const perm of perms) {
+            result.push([current, ...perm]);
+        }
+    }
+    
+    return result;
+}
+
+// n! grows: 5! = 120, 10! = 3.6M, 12! = 479M`
+    }
+  ],
+  spaceComplexities: [
+    {
+      notation: "O(1)",
+      name: "Constant Space",
+      description: "Uses fixed amount of memory regardless of input size",
+      color: "#10b981",
+      examples: [
+        "Few variables",
+        "In-place algorithms",
+        "Two pointers technique",
+        "Swapping elements"
+      ]
+    },
+    {
+      notation: "O(n)",
+      name: "Linear Space",
+      description: "Memory usage grows proportionally with input size",
+      color: "#8b5cf6",
+      examples: [
+        "Creating new array of size n",
+        "Hash map with n entries",
+        "Recursion call stack",
+        "Storing all elements"
+      ]
+    },
+    {
+      notation: "O(n²)",
+      name: "Quadratic Space",
+      description: "Memory usage grows quadratically with input",
+      color: "#ef4444",
+      examples: [
+        "2D matrix of size n×n",
+        "Graph adjacency matrix",
+        "Dynamic programming table",
+        "Storing all pairs"
+      ]
+    }
+  ],
+  visualizations: {
+    complexityChart: {
+      image: "/mnt/user-data/uploads/Big_O.jpg",
+      caption: "Visual representation of how different time complexities scale with input size"
+    },
+    dataStructures: {
+      image: "/mnt/user-data/uploads/Data.png",
+      caption: "Time and space complexity of common data structures"
+    },
+    dataOperations: {
+      image: "/mnt/user-data/uploads/DataOperation.jpg",
+      caption: "Complexity of operations on various data structures"
+    },
+    algorithms: {
+      image: "/mnt/user-data/uploads/Algorithms.png",
+      caption: "Time and space complexity of sorting algorithms"
+    }
+  },
+  keyInsights: [
+    {
+      title: "Drop Constants & Lower Terms",
+      description: "O(2n) = O(n), O(n² + n) = O(n²). Focus on the dominant term.",
+      icon: "info"
+    },
+    {
+      title: "Logarithmic is Extremely Fast",
+      description: "log(1,000,000) ≈ 20. Binary search on a million items takes only ~20 steps!",
+      icon: "trending-up"
+    },
+    {
+      title: "Know Your Limits",
+      description: "O(n²) works for n ≤ 3K, O(n) for n ≤ 1M, O(2ⁿ) for n ≤ 20. Plan accordingly.",
+      icon: "alert-circle"
+    },
+    {
+      title: "Space-Time Tradeoff",
+      description: "Often you can trade memory for speed. Hash tables use O(n) space for O(1) lookups.",
+      icon: "zap"
+    }
+  ],
+  interviewTips: [
+    {
+      number: 1,
+      title: "Always Analyze Both Time and Space",
+      description: "Interviewers want to see you consider memory usage, not just runtime. Mention both complexities."
+    },
+    {
+      number: 2,
+      title: "Explain Your Reasoning",
+      description: "Walk through why your solution has a certain complexity. Count loops, recursive calls, etc."
+    },
+    {
+      number: 3,
+      title: "Consider Amortized Complexity",
+      description: "Some operations are expensive occasionally but average out. Dynamic array resize is O(1) amortized."
+    },
+    {
+      number: 4,
+      title: "Optimize When Necessary",
+      description: "Start with working solution, then optimize. Explain trade-offs between different approaches."
+    }
+  ]
+},
 
   dataStructures: {
     title: "Data Structures",
